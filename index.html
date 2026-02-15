@@ -156,10 +156,62 @@ nav.s .nm span{background:var(--navy)}
 /* Glow underneath cards */
 .mc-glow{position:absolute;bottom:-40px;left:50%;width:260px;height:100px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(37,99,235,.08),transparent 70%);pointer-events:none;filter:blur(40px)}
 
+/* === HERO CARD PREMIUM ENHANCEMENTS === */
+/* Enhanced glass-morphism */
+.model-card{backdrop-filter:blur(32px) saturate(1.3);-webkit-backdrop-filter:blur(32px) saturate(1.3);background:rgba(8,16,32,.55);border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05) inset,0 0 40px rgba(37,99,235,.03) inset}
+.model-card:hover{box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08) inset,0 0 60px rgba(37,99,235,.08) inset,0 0 80px rgba(37,99,235,.06)}
+
+/* Pulsing glow accent line at bottom of each card */
+.mc-accent-glow{position:absolute;bottom:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,rgba(37,99,235,.4),rgba(37,99,235,.6),rgba(37,99,235,.4),transparent);border-radius:2px;animation:accentPulse 3s ease-in-out infinite;z-index:6}
+.mc-2 .mc-accent-glow{animation-delay:.8s}
+.mc-3 .mc-accent-glow{animation-delay:1.6s}
+@keyframes accentPulse{0%,100%{opacity:.3;transform:scaleX(.85)}50%{opacity:.8;transform:scaleX(1)}}
+
+/* Progress indicator bar */
+.mc-progress{height:2px;background:rgba(255,255,255,.04);margin:6px 0 2px;border-radius:1px;overflow:hidden;position:relative}
+.mc-progress-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,rgba(37,99,235,.25),rgba(37,99,235,.5));position:relative}
+.mc-progress-fill::after{content:'';position:absolute;right:0;top:-1px;width:4px;height:4px;background:rgba(37,99,235,.7);border-radius:50%;box-shadow:0 0 6px rgba(37,99,235,.5)}
+
+/* Sparkle / pulse dots at highlighted data points */
+.mc-hl,.mc-sens-hl{position:relative}
+.mc-sparkle{position:absolute;top:1px;right:1px;width:3px;height:3px;background:rgba(37,99,235,.6);border-radius:50%;animation:sparkle 2.5s ease-in-out infinite;pointer-events:none}
+@keyframes sparkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
+
+/* Color-shift animation on highlighted values */
+@keyframes colorShift{0%,100%{color:rgba(37,99,235,.4)}33%{color:rgba(59,130,246,.55)}66%{color:rgba(37,99,235,.5)}}
+.mc-hl{animation:colorShift 4s ease-in-out infinite}
+.mc-sens-hl{animation:colorShift 4s ease-in-out 1s infinite}
+
+/* Waterfall bar gradients instead of flat */
+.mc-wf-bar.mc-wf-pos{background:linear-gradient(180deg,rgba(37,99,235,.45),rgba(37,99,235,.18))}
+.mc-wf-bar.mc-wf-neg{background:linear-gradient(180deg,rgba(239,68,68,.18),rgba(239,68,68,.4));border-radius:0 0 2px 2px}
+.mc-wf-bar.mc-wf-total{background:linear-gradient(180deg,rgba(34,197,94,.4),rgba(34,197,94,.15))}
+
+/* Live indicator pulsing dot in card bar area */
+.mc-live{display:flex;align-items:center;gap:4px;margin-left:8px}
+.mc-live-dot{width:4px;height:4px;background:#28C840;border-radius:50%;animation:livePulse 1.8s ease-in-out infinite;box-shadow:0 0 4px rgba(40,200,64,.4)}
+.mc-live-label{font-size:5.5px;letter-spacing:1px;text-transform:uppercase;font-family:var(--sans);font-weight:700;color:rgba(40,200,64,.35)}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+
+/* Floating micro-particles around card stack */
+.mc-particles{position:absolute;inset:-30px;pointer-events:none;z-index:0;overflow:hidden}
+.mc-particle{position:absolute;width:2px;height:2px;background:rgba(37,99,235,.25);border-radius:50%;animation:drift linear infinite}
+.mc-particle:nth-child(1){top:10%;left:5%;animation-duration:12s;animation-delay:0s}
+.mc-particle:nth-child(2){top:30%;right:8%;animation-duration:16s;animation-delay:2s;width:1.5px;height:1.5px;background:rgba(255,255,255,.08)}
+.mc-particle:nth-child(3){bottom:20%;left:12%;animation-duration:14s;animation-delay:4s}
+.mc-particle:nth-child(4){top:60%;right:15%;animation-duration:18s;animation-delay:1s;width:1px;height:1px;background:rgba(255,255,255,.06)}
+.mc-particle:nth-child(5){top:80%;left:40%;animation-duration:15s;animation-delay:3s;background:rgba(37,99,235,.15)}
+.mc-particle:nth-child(6){top:5%;right:30%;animation-duration:20s;animation-delay:5s;width:1.5px;height:1.5px;background:rgba(255,255,255,.05)}
+.mc-particle:nth-child(7){top:45%;left:2%;animation-duration:13s;animation-delay:6s;background:rgba(37,99,235,.2)}
+.mc-particle:nth-child(8){bottom:10%;right:5%;animation-duration:17s;animation-delay:2.5s;width:1px;height:1px;background:rgba(255,255,255,.07)}
+@keyframes drift{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-60px) translateX(20px);opacity:0}}
+
 @media(prefers-reduced-motion:reduce){
   .model-card{transform:none!important;transition:none!important}
-  .mc-shimmer{display:none!important}
+  .mc-shimmer,.mc-particles{display:none!important}
   .hero-ring,.hero-glow,.hero-glow-2{animation:none!important}
+  .mc-accent-glow,.mc-sparkle,.mc-live-dot,.mc-particle{animation:none!important}
+  .mc-hl,.mc-sens-hl{animation:none!important}
   .model-card:hover{transform:none!important;box-shadow:0 30px 80px rgba(0,0,0,.35)!important}
 }
 
@@ -233,6 +285,18 @@ nav.s .nm span{background:var(--navy)}
 .tx-d{font-size:11.5px;color:var(--txt2);line-height:1.6;margin-bottom:10px;flex:1}
 .tx-tags{display:flex;gap:5px;flex-wrap:wrap}
 .tx-t{font-size:9.5px;color:var(--txt3);padding:3px 7px;border:1px solid var(--bdr);letter-spacing:.5px}
+
+/* === MODEL SHOWCASE === */
+.ms-bg{background:var(--white)}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+.ms{background:var(--white);border:1px solid var(--bdr);padding:28px 24px 22px;transition:.3s;display:flex;flex-direction:column}.ms:hover{box-shadow:0 4px 16px rgba(11,24,41,.05);border-color:var(--navy)}
+.ms-icon{width:36px;height:36px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;background:var(--blue-dim);border-radius:8px;color:var(--blue);flex-shrink:0}
+.ms-icon svg{width:20px;height:20px}
+.ms-type{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px}
+.ms-nm{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.ms-d{font-size:11.5px;color:var(--txt2);line-height:1.6;margin-bottom:10px;flex:1}
+.ms-tags{display:flex;gap:5px;flex-wrap:wrap}
+.ms-t{font-size:9.5px;color:var(--txt3);padding:3px 7px;border:1px solid var(--bdr);letter-spacing:.5px}
 
 /* === ABOUT === */
 .about-intro{margin-bottom:48px}
@@ -315,7 +379,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
   .model-card{width:280px}
   .sec,.sw{padding:64px 20px}
   .sv-grid{grid-template-columns:repeat(2,1fr)}
-  .hiw-grid,.tx-grid{grid-template-columns:1fr}
+  .hiw-grid,.tx-grid,.ms-grid{grid-template-columns:1fr}
   .llm{grid-template-columns:1fr}
   .about-cards{grid-template-columns:repeat(2,1fr);gap:10px}
   .about-stats{grid-template-columns:repeat(2,1fr);gap:8px}
@@ -358,6 +422,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 <div class="drawer" id="drawer">
   <a href="#services" onclick="closeDrawer()"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
   <a href="#transactions" onclick="closeDrawer()"><span class="lang-en">Transactions</span><span class="lang-de">Transaktionen</span></a>
+  <a href="#showcase" onclick="closeDrawer()"><span class="lang-en">Showcase</span><span class="lang-de">Galerie</span></a>
   <a href="#about" onclick="closeDrawer()"><span class="lang-en">About</span><span class="lang-de">Über uns</span></a>
   <a href="#engagement" onclick="closeDrawer()"><span class="lang-en">Engagement</span><span class="lang-de">Konditionen</span></a>
   <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="drawer-cta"><span class="lang-en">Book a Scoping Call</span><span class="lang-de">Scoping-Call buchen</span></a>
@@ -372,6 +437,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
   <ul class="nl">
     <li><a href="#services"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a></li>
     <li><a href="#transactions"><span class="lang-en">Transactions</span><span class="lang-de">Transaktionen</span></a></li>
+    <li><a href="#showcase"><span class="lang-en">Showcase</span><span class="lang-de">Galerie</span></a></li>
     <li><a href="#about"><span class="lang-en">About</span><span class="lang-de">Über uns</span></a></li>
     <li><a href="#engagement"><span class="lang-en">Engagement</span><span class="lang-de">Konditionen</span></a></li>
   </ul>
@@ -415,12 +481,15 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 1: LBO Returns (top, z-index 3) -->
         <div class="model-card mc-1">
           <div class="mc-shimmer"></div>
+          <div class="mc-accent-glow"></div>
           <div class="mc-scenario"><div class="mc-scenario-inner"><span class="mc-scn-base">Base Case</span><span class="mc-scn-down">Downside</span></div></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
+            <div class="mc-live"><span class="mc-live-dot"></span><span class="mc-live-label">Live</span></div>
             <div class="mc-title">LBO Returns</div>
           </div>
           <div class="mc-body">
+            <div class="mc-progress"><div class="mc-progress-fill" style="width:72%"></div></div>
             <div class="mc-grid">
               <div class="mc-grid-row mc-grid-header">
                 <div class="mc-grid-cell"></div>
@@ -430,19 +499,19 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
               </div>
               <div class="mc-grid-row">
                 <div class="mc-grid-cell">MoM</div>
-                <div class="mc-grid-cell mc-hl">2.4x</div>
+                <div class="mc-grid-cell mc-hl">2.4x<span class="mc-sparkle"></span></div>
                 <div class="mc-grid-cell">3.1x</div>
                 <div class="mc-grid-cell">1.6x</div>
               </div>
               <div class="mc-grid-row">
                 <div class="mc-grid-cell">IRR</div>
-                <div class="mc-grid-cell mc-hl">22.1%</div>
+                <div class="mc-grid-cell mc-hl">22.1%<span class="mc-sparkle" style="animation-delay:.6s"></span></div>
                 <div class="mc-grid-cell">28.4%</div>
                 <div class="mc-grid-cell">12.3%</div>
               </div>
               <div class="mc-grid-row">
                 <div class="mc-grid-cell">Equity</div>
-                <div class="mc-grid-cell mc-hl">$412m</div>
+                <div class="mc-grid-cell mc-hl">$412m<span class="mc-sparkle" style="animation-delay:1.2s"></span></div>
                 <div class="mc-grid-cell">$531m</div>
                 <div class="mc-grid-cell">$274m</div>
               </div>
@@ -453,11 +522,14 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 2: DCF Valuation (middle, z-index 2) -->
         <div class="model-card mc-2">
           <div class="mc-shimmer"></div>
+          <div class="mc-accent-glow"></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
+            <div class="mc-live"><span class="mc-live-dot"></span><span class="mc-live-label">Live</span></div>
             <div class="mc-title">DCF Valuation</div>
           </div>
           <div class="mc-body">
+            <div class="mc-progress"><div class="mc-progress-fill" style="width:45%"></div></div>
             <div class="mc-sens">
               <div class="mc-sens-row mc-sens-header">
                 <div class="mc-sens-cell">WACC \ g</div>
@@ -476,7 +548,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
               <div class="mc-sens-row">
                 <div class="mc-sens-cell">9.0%</div>
                 <div class="mc-sens-cell">$42.6</div>
-                <div class="mc-sens-cell mc-sens-hl">$45.8</div>
+                <div class="mc-sens-cell mc-sens-hl">$45.8<span class="mc-sparkle"></span></div>
                 <div class="mc-sens-cell">$49.4</div>
                 <div class="mc-sens-cell">$53.7</div>
               </div>
@@ -501,11 +573,14 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 3: Returns Waterfall (bottom, z-index 1) -->
         <div class="model-card mc-3">
           <div class="mc-shimmer"></div>
+          <div class="mc-accent-glow"></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
+            <div class="mc-live"><span class="mc-live-dot"></span><span class="mc-live-label">Live</span></div>
             <div class="mc-title">Returns Waterfall</div>
           </div>
           <div class="mc-body">
+            <div class="mc-progress"><div class="mc-progress-fill" style="width:88%"></div></div>
             <div class="mc-waterfall">
               <div class="mc-wf-bar-wrap">
                 <div class="mc-wf-val">1.0x</div>
@@ -541,6 +616,17 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
           </div>
         </div>
 
+        <!-- Floating micro-particles -->
+        <div class="mc-particles">
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+          <div class="mc-particle"></div>
+        </div>
         <div class="mc-glow"></div>
       </div>
     </div>
@@ -670,6 +756,63 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
     </div>
     <div class="sec-cta rv"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bn"><span class="lang-en">Discuss Your Project</span><span class="lang-de">Ihr Projekt besprechen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<section class="sw ms-bg" id="showcase">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="rv"><div class="sl"><span class="lang-en">Model Showcase</span><span class="lang-de">Modell-Galerie</span></div><div class="st"><span class="lang-en">Beyond Transactions</span><span class="lang-de">Über Transaktionen hinaus</span></div><div class="ss"><span class="lang-en">Anonymised models built for sponsors, corporates, and platforms across sectors and methodologies.</span><span class="lang-de">Anonymisierte Modelle, erstellt für Sponsoren, Unternehmen und Plattformen über verschiedene Sektoren und Methoden hinweg.</span></div></div>
+    <div class="ms-grid rv">
+
+      <div class="ms">
+        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-9"/></svg></div>
+        <div class="ms-type">B2B SaaS</div>
+        <div class="ms-nm"><span class="lang-en">Three-Statement Model</span><span class="lang-de">Drei-Statement-Modell</span></div>
+        <div class="ms-d"><span class="lang-en">Revenue-driver build with cohort-based retention, ARR waterfall, and expansion logic feeding a fully integrated P&amp;L, balance sheet, and cash flow.</span><span class="lang-de">Umsatztreibermodell mit kohortenbasierter Retention, ARR-Wasserfall und Expansionslogik in einem integrierten GuV, Bilanz und Cashflow.</span></div>
+        <div class="ms-tags"><span class="ms-t">Revenue Drivers</span><span class="ms-t">ARR Waterfall</span><span class="ms-t">Three-Statement</span></div>
+      </div>
+
+      <div class="ms">
+        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="ms-type">Consumer Healthcare</div>
+        <div class="ms-nm"><span class="lang-en">DCF Valuation</span><span class="lang-de">DCF-Bewertung</span></div>
+        <div class="ms-d"><span class="lang-en">Multi-segment DCF with country-level revenue build, WACC-by-division, and football-field output bridging to prior transaction benchmarks.</span><span class="lang-de">Multi-Segment-DCF mit l&auml;nderspezifischer Umsatzherleitung, WACC nach Division und Football-Field-Output mit Benchmarking gegen Vergleichstransaktionen.</span></div>
+        <div class="ms-tags"><span class="ms-t">DCF</span><span class="ms-t">Sensitivity</span><span class="ms-t">Sum-of-Parts</span></div>
+      </div>
+
+      <div class="ms">
+        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="ms-type">PE Fund</div>
+        <div class="ms-nm"><span class="lang-en">Returns &amp; Waterfall Analysis</span><span class="lang-de">Rendite- &amp; Wasserfall-Analyse</span></div>
+        <div class="ms-d"><span class="lang-en">Fund-level returns model with deal-by-deal attribution, GP/LP waterfall, promote hurdles, and carried interest mechanics.</span><span class="lang-de">Fondsrenditemodell mit Deal-by-Deal-Attribution, GP/LP-Wasserfall, Promote-H&uuml;rden und Carried-Interest-Mechanik.</span></div>
+        <div class="ms-tags"><span class="ms-t">Fund Returns</span><span class="ms-t">GP/LP Waterfall</span><span class="ms-t">Carry</span></div>
+      </div>
+
+      <div class="ms">
+        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div>
+        <div class="ms-type">Infrastructure</div>
+        <div class="ms-nm"><span class="lang-en">Project Cost Model</span><span class="lang-de">Projektkostenmodell</span></div>
+        <div class="ms-d"><span class="lang-en">Multi-phase development cost build with drawdown schedules, contingency layers, and funding-source waterfall feeding project IRR.</span><span class="lang-de">Mehrstufige Projektkostenaufstellung mit Abrufpl&auml;nen, Kontingenzstufen und Finanzierungsquellen-Wasserfall als Input f&uuml;r Projekt-IRR.</span></div>
+        <div class="ms-tags"><span class="ms-t">CapEx Build</span><span class="ms-t">Drawdown</span><span class="ms-t">Project IRR</span></div>
+      </div>
+
+      <div class="ms">
+        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="ms-type">Leisure &amp; Hospitality</div>
+        <div class="ms-nm"><span class="lang-en">Operating Model</span><span class="lang-de">Operating Model</span></div>
+        <div class="ms-d"><span class="lang-en">Unit-economics-driven P&amp;L with membership tiers, utilisation curves, and scenario toggles for expansion planning across multiple locations.</span><span class="lang-de">St&uuml;ckkostenbasierte GuV mit Mitgliedschaftsstufen, Auslastungskurven und Szenariotogles f&uuml;r Expansionsplanung &uuml;ber mehrere Standorte.</span></div>
+        <div class="ms-tags"><span class="ms-t">Unit Economics</span><span class="ms-t">Scenario</span><span class="ms-t">Expansion</span></div>
+      </div>
+
+      <div class="ms">
+        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
+        <div class="ms-type">Automotive OEM</div>
+        <div class="ms-nm"><span class="lang-en">Capital Structure</span><span class="lang-de">Kapitalstruktur</span></div>
+        <div class="ms-d"><span class="lang-en">Debt capacity analysis with covenant testing, refinancing schedules, and rating-agency metrics mapped against downside operating scenarios.</span><span class="lang-de">Verschuldungskapazit&auml;tsanalyse mit Covenant-Tests, Refinanzierungspl&auml;nen und Rating-Agentur-Metriken im Abgleich mit negativen Betriebsszenarien.</span></div>
+        <div class="ms-tags"><span class="ms-t">Debt Sizing</span><span class="ms-t">Covenants</span><span class="ms-t">Stress Test</span></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
