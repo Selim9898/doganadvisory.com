@@ -145,15 +145,14 @@ nav.s .nm span{background:var(--navy)}
 .mc-sens-cell.mc-sens-hl{color:rgba(37,99,235,.8);font-weight:700;background:rgba(37,99,235,.08)}
 
 /* Waterfall chart — true bridge layout */
-.mc-waterfall{display:flex;gap:4px;height:80px;padding-top:8px;position:relative;align-items:flex-end}
-.mc-wf-bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;justify-content:flex-end}
-.mc-wf-bar{width:100%;border-radius:2px 2px 0 0;min-height:4px;transition:height .3s ease}
+.mc-waterfall{display:flex;gap:4px;height:88px;padding-top:8px;position:relative}
+.mc-wf-bar-wrap{flex:1;position:relative;display:flex;flex-direction:column;align-items:center}
+.mc-wf-bar{width:100%;border-radius:2px 2px 0 0;position:absolute;left:0;right:0}
 .mc-wf-bar.mc-wf-pos{background:rgba(37,99,235,.5)}
 .mc-wf-bar.mc-wf-neg{background:rgba(239,68,68,.5);border-radius:0 0 2px 2px}
 .mc-wf-bar.mc-wf-total{background:rgba(34,197,94,.45)}
-.mc-wf-val{font-size:6px;font-family:'SF Mono',monospace;color:rgba(255,255,255,.4);margin-bottom:2px;white-space:nowrap;letter-spacing:.3px}
-.mc-wf-label{font-size:5.5px;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;text-align:center;line-height:1.2}
-.mc-wf-connector{position:absolute;top:0;left:0;right:0;height:100%;pointer-events:none}
+.mc-wf-val{font-size:6px;font-family:'SF Mono',monospace;color:rgba(255,255,255,.4);white-space:nowrap;letter-spacing:.3px;position:absolute;left:50%;transform:translateX(-50%)}
+.mc-wf-label{font-size:5.5px;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.2;position:absolute;bottom:0;left:0;right:0}
 
 /* Glow underneath cards */
 .mc-glow{position:absolute;bottom:-40px;left:50%;width:260px;height:100px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(37,99,235,.08),transparent 70%);pointer-events:none;filter:blur(40px)}
@@ -526,33 +525,33 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
           <div class="mc-body">
             <div class="mc-waterfall">
               <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val">1.0x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="height:28px"></div>
+                <div class="mc-wf-val" style="bottom:42px">1.0x</div>
+                <div class="mc-wf-bar mc-wf-pos" style="bottom:14px;height:26px"></div>
                 <div class="mc-wf-label">Entry</div>
               </div>
-              <div class="mc-wf-bar-wrap" style="padding-bottom:28px">
-                <div class="mc-wf-val">+0.6x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="height:18px"></div>
+              <div class="mc-wf-bar-wrap">
+                <div class="mc-wf-val" style="bottom:58px">+0.6x</div>
+                <div class="mc-wf-bar mc-wf-pos" style="bottom:40px;height:16px"></div>
                 <div class="mc-wf-label">Rev<br>Growth</div>
               </div>
-              <div class="mc-wf-bar-wrap" style="padding-bottom:46px">
-                <div class="mc-wf-val">+0.3x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="height:10px"></div>
+              <div class="mc-wf-bar-wrap">
+                <div class="mc-wf-val" style="bottom:66px">+0.3x</div>
+                <div class="mc-wf-bar mc-wf-pos" style="bottom:56px;height:8px"></div>
                 <div class="mc-wf-label">Margin</div>
               </div>
-              <div class="mc-wf-bar-wrap" style="padding-bottom:56px">
-                <div class="mc-wf-val">+0.4x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="height:14px"></div>
+              <div class="mc-wf-bar-wrap">
+                <div class="mc-wf-val" style="bottom:76px">+0.4x</div>
+                <div class="mc-wf-bar mc-wf-pos" style="bottom:64px;height:10px"></div>
                 <div class="mc-wf-label">De-<br>lever</div>
               </div>
-              <div class="mc-wf-bar-wrap" style="padding-bottom:62px">
-                <div class="mc-wf-val">-0.2x</div>
-                <div class="mc-wf-bar mc-wf-neg" style="height:8px"></div>
+              <div class="mc-wf-bar-wrap">
+                <div class="mc-wf-val" style="bottom:76px">-0.2x</div>
+                <div class="mc-wf-bar mc-wf-neg" style="bottom:69px;height:5px"></div>
                 <div class="mc-wf-label">Multi-<br>ple</div>
               </div>
               <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val">2.1x</div>
-                <div class="mc-wf-bar mc-wf-total" style="height:58px"></div>
+                <div class="mc-wf-val" style="bottom:71px">2.1x</div>
+                <div class="mc-wf-bar mc-wf-total" style="bottom:14px;height:55px"></div>
                 <div class="mc-wf-label">Exit</div>
               </div>
             </div>
