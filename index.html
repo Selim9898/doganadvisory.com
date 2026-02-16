@@ -94,11 +94,11 @@ nav.s .nm span{background:var(--navy)}
 /* === HERO CARDS — 3-card pitch-book stack === */
 .hero-right{display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeUp .8s ease forwards .5s}
 .model-stack{position:relative;width:380px;height:460px;perspective:900px}
-.model-card{position:absolute;width:340px;border-radius:12px;background:rgba(8,16,32,.65);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(28px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04) inset;transition:transform .6s cubic-bezier(.23,1,.32,1),box-shadow .6s ease;cursor:default}
+.model-card{position:absolute;width:340px;border-radius:12px;background:rgba(15,25,50,.92);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(28px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06) inset;transition:transform .6s cubic-bezier(.23,1,.32,1),box-shadow .6s ease;cursor:default}
 .model-card::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.03) 0%,transparent 40%);pointer-events:none;border-radius:12px}
 .model-card .mc-shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);pointer-events:none;z-index:5}
 .model-card:hover .mc-shimmer{left:160%;transition:left 1.2s ease}
-.model-card:hover{box-shadow:0 40px 100px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.05) inset,0 0 60px rgba(37,99,235,.06)}
+.model-card:hover{box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.1) inset,0 0 60px rgba(37,99,235,.1)}
 
 /* Card positioning — layered stack, each card peeks below the one above */
 .mc-1{top:0;left:15px;z-index:3;transform:rotateY(calc(var(--mx)*4deg)) rotateX(calc(var(--my)*-3deg))}
@@ -109,16 +109,16 @@ nav.s .nm span{background:var(--navy)}
 .mc-3:hover{z-index:10;transform:rotateY(calc(var(--mx)*2.5deg)) rotateX(calc(var(--my)*-2deg)) translateY(-6px) scale(1.02)}
 
 /* Card shared inner elements */
-.mc-bar{display:flex;align-items:center;padding:8px 12px;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.04)}
+.mc-bar{display:flex;align-items:center;padding:8px 12px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08)}
 .mc-dots{display:flex;gap:4px}
 .mc-dots span{width:6px;height:6px;border-radius:50%}
 .mc-dots span:nth-child(1){background:#FF5F57}.mc-dots span:nth-child(2){background:#FEBC2E}.mc-dots span:nth-child(3){background:#28C840}
-.mc-title{margin-left:auto;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.15)}
+.mc-title{margin-left:auto;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.35)}
 .mc-body{padding:10px 14px 14px}
 
-/* Scenario badge on LBO card */
-.mc-scenario{position:absolute;top:7px;right:12px;z-index:6}
-.mc-scenario-inner{padding:2px 7px;font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(37,99,235,.15);background:rgba(37,99,235,.06);color:rgba(37,99,235,.45);transition:all .5s ease}
+/* Scenario badge on LBO card — inline in the title bar */
+.mc-scenario{position:relative;margin-left:8px;z-index:6}
+.mc-scenario-inner{padding:2px 7px;font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(37,99,235,.25);background:rgba(37,99,235,.1);color:rgba(37,99,235,.7);border-radius:3px;transition:all .5s ease}
 .mc-1:hover .mc-scenario-inner{border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.06);color:rgba(239,68,68,.5)}
 .mc-scn-base,.mc-scn-down{transition:opacity .4s,transform .4s}
 .mc-scn-down{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:2px 7px;opacity:0;transform:translateY(4px)}
@@ -129,28 +129,28 @@ nav.s .nm span{background:var(--navy)}
 /* LBO Returns data grid */
 .mc-grid{width:100%}
 .mc-grid-row{display:grid;grid-template-columns:60px 1fr 1fr 1fr;gap:0}
-.mc-grid-row.mc-grid-header .mc-grid-cell{font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.08);padding:3px 6px;border-bottom:1px solid rgba(255,255,255,.04)}
-.mc-grid-cell{font-size:8px;font-family:'SF Mono','Consolas','Courier New',monospace;color:rgba(255,255,255,.14);text-align:right;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,.02);letter-spacing:.3px;white-space:nowrap}
-.mc-grid-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.16)}
-.mc-grid-cell.mc-hl{color:rgba(37,99,235,.4);font-weight:700}
+.mc-grid-row.mc-grid-header .mc-grid-cell{font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:3px 6px;border-bottom:1px solid rgba(255,255,255,.08)}
+.mc-grid-cell{font-size:8px;font-family:'SF Mono','Consolas','Courier New',monospace;color:rgba(255,255,255,.45);text-align:right;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px;white-space:nowrap}
+.mc-grid-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.5)}
+.mc-grid-cell.mc-hl{color:rgba(37,99,235,.8);font-weight:700}
 
 /* DCF Sensitivity table */
 .mc-sens{width:100%}
 .mc-sens-row{display:grid;grid-template-columns:48px repeat(4,1fr);gap:0}
-.mc-sens-row.mc-sens-header .mc-sens-cell{font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.08);padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.04)}
-.mc-sens-cell{font-size:7.5px;font-family:'SF Mono','Consolas','Courier New',monospace;color:rgba(255,255,255,.12);text-align:center;padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.02);letter-spacing:.3px}
-.mc-sens-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.14);font-size:7px}
-.mc-sens-cell.mc-sens-hl{color:rgba(37,99,235,.4);font-weight:700;background:rgba(37,99,235,.04)}
+.mc-sens-row.mc-sens-header .mc-sens-cell{font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.mc-sens-cell{font-size:7.5px;font-family:'SF Mono','Consolas','Courier New',monospace;color:rgba(255,255,255,.45);text-align:center;padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px}
+.mc-sens-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.5);font-size:7px}
+.mc-sens-cell.mc-sens-hl{color:rgba(37,99,235,.8);font-weight:700;background:rgba(37,99,235,.08)}
 
 /* Waterfall chart */
 .mc-waterfall{display:flex;align-items:flex-end;gap:4px;height:80px;padding-top:8px;position:relative}
 .mc-wf-bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
 .mc-wf-bar{width:100%;border-radius:2px 2px 0 0;min-height:4px;transition:height .3s ease}
-.mc-wf-bar.mc-wf-pos{background:rgba(37,99,235,.3)}
-.mc-wf-bar.mc-wf-neg{background:rgba(239,68,68,.3);border-radius:0 0 2px 2px}
-.mc-wf-bar.mc-wf-total{background:rgba(34,197,94,.25)}
-.mc-wf-val{font-size:6px;font-family:'SF Mono',monospace;color:rgba(255,255,255,.12);margin-bottom:2px;white-space:nowrap;letter-spacing:.3px}
-.mc-wf-label{font-size:5.5px;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.08);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;text-align:center;line-height:1.2}
+.mc-wf-bar.mc-wf-pos{background:rgba(37,99,235,.5)}
+.mc-wf-bar.mc-wf-neg{background:rgba(239,68,68,.5);border-radius:0 0 2px 2px}
+.mc-wf-bar.mc-wf-total{background:rgba(34,197,94,.45)}
+.mc-wf-val{font-size:6px;font-family:'SF Mono',monospace;color:rgba(255,255,255,.4);margin-bottom:2px;white-space:nowrap;letter-spacing:.3px}
+.mc-wf-label{font-size:5.5px;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;text-align:center;line-height:1.2}
 .mc-wf-connector{position:absolute;top:0;left:0;right:0;height:100%;pointer-events:none}
 
 /* Glow underneath cards */
@@ -429,10 +429,10 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 1: LBO Returns (top, z-index 3) -->
         <div class="model-card mc-1">
           <div class="mc-shimmer"></div>
-          <div class="mc-scenario"><div class="mc-scenario-inner"><span class="mc-scn-base">Base Case</span><span class="mc-scn-down">Downside</span></div></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
             <div class="mc-title">LBO Returns</div>
+            <div class="mc-scenario"><div class="mc-scenario-inner"><span class="mc-scn-base">Base Case</span><span class="mc-scn-down">Downside</span></div></div>
           </div>
           <div class="mc-body">
             <div class="mc-grid">
