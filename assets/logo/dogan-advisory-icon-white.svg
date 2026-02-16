@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none">
+  <!-- Dogan Advisory — Icon / Favicon (white for dark backgrounds) -->
+
+  <!-- Outer D shape -->
+  <path d="M4 4h20c15.5 0 28 12.5 28 28s-12.5 28-28 28H4V4z" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <!-- Inner diagonal accent line -->
+  <line x1="15" y1="48" x2="40" y2="12" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Small dot accent -->
+  <circle cx="15" cy="48" r="2.5" fill="#2563EB"/>
+</svg>

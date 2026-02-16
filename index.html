@@ -35,7 +35,12 @@ body.de .lang-en{display:none!important}
 /* === NAV === */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:0;transition:.4s}
 nav.s{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr)}
-.brand{display:flex;align-items:center;gap:0;text-decoration:none;transition:.3s}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;transition:.3s}
+.brand-mark{width:32px;height:32px;flex-shrink:0}
+.brand-mark .mark-d{fill:none;stroke:#fff;stroke-width:2.5;transition:stroke .3s}
+.brand-mark .mark-line{stroke:#2563EB;stroke-width:2.5;stroke-linecap:round}
+.brand-mark .mark-dot{fill:#2563EB}
+nav.s .brand-mark .mark-d{stroke:var(--navy)}
 .brand-wordmark{display:flex;flex-direction:column;line-height:1}
 .brand-name{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:2.5px;color:#fff;transition:.3s;text-transform:uppercase}
 .brand-sub{font-family:var(--sans);font-size:8px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:2px;transition:.3s;font-variant:small-caps}
@@ -373,6 +378,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 </div>
 <nav id="nav">
   <a href="#" class="brand">
+    <svg class="brand-mark" viewBox="0 0 56 56" fill="none"><path class="mark-d" d="M4 4h20c15.5 0 28 12.5 28 28s-12.5 28-28 28H4V4z"/><line class="mark-line" x1="15" y1="48" x2="40" y2="12"/><circle class="mark-dot" cx="15" cy="48" r="2.5"/></svg>
     <div class="brand-wordmark">
       <span class="brand-name">Dogan</span>
       <span class="brand-sub">Advisory</span>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" fill="none">
+  <!-- Dogan Advisory — Primary Logo (for light backgrounds) -->
+
+  <!-- Monogram Mark: Stylised "D" with inner diagonal -->
+  <g>
+    <!-- Outer D shape -->
+    <path d="M4 4h16c14.4 0 26 11.6 26 26s-11.6 26-26 26H4V4z" fill="none" stroke="#0B1829" stroke-width="2.5"/>
+    <!-- Inner diagonal accent line -->
+    <line x1="14" y1="46" x2="36" y2="14" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <!-- Small dot accent -->
+    <circle cx="14" cy="46" r="2" fill="#2563EB"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="58" y="32" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="600" letter-spacing="6" fill="#0B1829">DOGAN</text>
+
+  <!-- Subtitle -->
+  <text x="58" y="50" font-family="'DM Sans', 'Helvetica Neue', sans-serif" font-size="10" font-weight="500" letter-spacing="4.5" fill="rgba(11,24,41,0.4)">ADVISORY</text>
+</svg>
