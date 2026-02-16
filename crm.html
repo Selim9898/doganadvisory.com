@@ -205,7 +205,7 @@ td input:focus{border-color:var(--blue);background:var(--white);outline:none}
 <script>
 var AUTH_HASH='9ca6a0fa713ba069b0046f6c91b8e2fa7e2a07c473eb536bcf52ed1f155dbf18';
 async function hashStr(s){var e=new TextEncoder().encode(s);var h=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0')}).join('')}
-function unlock(){document.getElementById('authGate').classList.add('hidden');document.querySelector('.app').style.display='';sessionStorage.setItem('crm_auth','1')}
+function unlock(){document.getElementById('authGate').classList.add('hidden');document.querySelector('.app').style.display='block';sessionStorage.setItem('crm_auth','1')}
 async function tryAuth(){var p=document.getElementById('authPass').value;var h=await hashStr(p);if(h===AUTH_HASH){unlock()}else{document.getElementById('authErr').textContent='Incorrect password.'}}
 document.getElementById('authPass').addEventListener('keydown',function(e){if(e.key==='Enter')tryAuth()});
 if(sessionStorage.getItem('crm_auth')==='1'){unlock()}
