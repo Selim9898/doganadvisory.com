@@ -188,8 +188,8 @@ nav.s .nm span{background:var(--navy)}
 .exp-bar{padding:56px 48px;background:var(--off);border-bottom:1px solid var(--bdr2);text-align:center}
 .exp-label{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:28px}
 .exp-track{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
-.exp-logo{height:20px;width:auto;opacity:.25;transition:opacity .3s;filter:grayscale(1)}
-.exp-logo:hover{opacity:.5;filter:grayscale(0)}
+.exp-logo{height:20px;width:auto;opacity:.25;transition:opacity .3s}
+.exp-logo:hover{opacity:.5}
 
 /* === SERVICES === */
 .sv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);margin-top:52px}
@@ -228,8 +228,6 @@ nav.s .nm span{background:var(--navy)}
 .tx-logo-area{height:36px;margin-bottom:16px;display:flex;align-items:center}
 .tx-logo-area svg{max-height:28px;width:auto;opacity:.45;transition:opacity .3s}
 .tx:hover .tx-logo-area svg{opacity:.85}
-.tx-logo-area img{max-height:28px;width:auto;opacity:.45;transition:opacity .3s,filter .3s;filter:grayscale(1)}
-.tx:hover .tx-logo-area img{opacity:.85;filter:grayscale(0)}
 .tx-sec{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px}
 .tx-nm{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:6px;line-height:1.3}
 .tx-d{font-size:11.5px;color:var(--txt2);line-height:1.6;margin-bottom:10px;flex:1}
@@ -574,15 +572,15 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 <div class="exp-bar">
   <div class="exp-label"><span class="lang-en">Modelling Experience Alongside</span><span class="lang-de">Modelling-Erfahrung mit</span></div>
   <div class="exp-track">
-    <img class="exp-logo" src="https://logo.clearbit.com/jefferies.com" alt="Jefferies" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 120 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=15 font-weight=700 fill=#3A4A60 letter-spacing=.5>Jefferies</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/jpmorgan.com" alt="J.P. Morgan" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 140 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=14 font-weight=700 fill=#3A4A60>J.P. Morgan</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/goldmansachs.com" alt="Goldman Sachs" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 170 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=14 font-weight=700 fill=#3A4A60>Goldman Sachs</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/nordiccapital.com" alt="Nordic Capital" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 160 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=13 font-weight=600 fill=#3A4A60 letter-spacing=1>NORDIC CAPITAL</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/platinumequity.com" alt="Platinum Equity" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 170 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=13 font-weight=600 fill=#3A4A60 letter-spacing=1>PLATINUM EQUITY</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/gbl.be" alt="GBL" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 46 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=16 font-weight=700 fill=#3A4A60 letter-spacing=1.5>GBL</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/fsncapital.com" alt="FSN Capital" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 140 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=13 font-weight=600 fill=#3A4A60 letter-spacing=1>FSN CAPITAL</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/altor.com" alt="Altor" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 68 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=14 font-weight=700 fill=#3A4A60 letter-spacing=1.5>ALTOR</text></svg>'">
-    <img class="exp-logo" src="https://logo.clearbit.com/triton-partners.com" alt="Triton" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 80 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=14 font-weight=700 fill=#3A4A60 letter-spacing=1.5>TRITON</text></svg>'">
+    <svg class="exp-logo" viewBox="0 0 120 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#3A4A60" letter-spacing=".5">Jefferies</text></svg>
+    <svg class="exp-logo" viewBox="0 0 140 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#3A4A60">J.P. Morgan</text></svg>
+    <svg class="exp-logo" viewBox="0 0 170 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#3A4A60">Goldman Sachs</text></svg>
+    <svg class="exp-logo" viewBox="0 0 160 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">NORDIC CAPITAL</text></svg>
+    <svg class="exp-logo" viewBox="0 0 175 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">PLATINUM EQUITY</text></svg>
+    <svg class="exp-logo" viewBox="0 0 46 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#3A4A60" letter-spacing="1.5">GBL</text></svg>
+    <svg class="exp-logo" viewBox="0 0 140 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">FSN CAPITAL</text></svg>
+    <svg class="exp-logo" viewBox="0 0 68 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing="1.5">ALTOR</text></svg>
+    <svg class="exp-logo" viewBox="0 0 80 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing="1.5">TRITON</text></svg>
   </div>
 </div>
 
@@ -636,7 +634,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <img src="https://logo.clearbit.com/asyad.com" alt="Asyad" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 100 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:24px\'><text x=0 y=20 font-family=Georgia,serif font-size=20 font-weight=700 fill=#0B1829 letter-spacing=1>ASYAD</text></svg>'">
+          <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" style="height:24px"><text x="0" y="20" font-family="Georgia,serif" font-size="20" font-weight="700" fill="#0B1829" letter-spacing="1">ASYAD</text></svg>
         </div>
         <div class="tx-sec">Maritime</div>
         <div class="tx-nm">Asyad Shipping Company</div>
@@ -646,7 +644,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <img src="https://logo.clearbit.com/sunrisemedical.com" alt="Sunrise Medical" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 200 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=DM+Sans,sans-serif font-size=16 font-weight=700 fill=#0B1829 letter-spacing=.5>Sunrise Medical</text></svg>'">
+          <svg viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="16" font-weight="700" fill="#0B1829" letter-spacing=".5">Sunrise Medical</text></svg>
         </div>
         <div class="tx-sec">MedTech</div>
         <div class="tx-nm">Sunrise Medical Group</div>
@@ -656,7 +654,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <img src="https://logo.clearbit.com/a2mac1.com" alt="A2Mac1" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 110 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=DM+Sans,sans-serif font-size=17 font-weight=700 fill=#0B1829 letter-spacing=.5>A2Mac1</text></svg>'">
+          <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="17" font-weight="700" fill="#0B1829" letter-spacing=".5">A2Mac1</text></svg>
         </div>
         <div class="tx-sec">Technology</div>
         <div class="tx-nm">A2Mac1</div>
@@ -666,7 +664,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <img src="https://logo.clearbit.com/affidea.com" alt="Affidea" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 110 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=Georgia,serif font-size=18 font-weight=700 fill=#0B1829 letter-spacing=.3>Affidea</text></svg>'">
+          <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#0B1829" letter-spacing=".3">Affidea</text></svg>
         </div>
         <div class="tx-sec">Healthcare Services</div>
         <div class="tx-nm">Affidea Group</div>
@@ -676,7 +674,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <img src="https://logo.clearbit.com/optigroup.com" alt="OptiGroup" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 140 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=DM+Sans,sans-serif font-size=17 font-weight=700 fill=#0B1829 letter-spacing=.3>OptiGroup</text></svg>'">
+          <svg viewBox="0 0 140 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="17" font-weight="700" fill="#0B1829" letter-spacing=".3">OptiGroup</text></svg>
         </div>
         <div class="tx-sec">Business Services</div>
         <div class="tx-nm">OptiGroup AB</div>
