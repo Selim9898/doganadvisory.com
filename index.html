@@ -144,9 +144,9 @@ nav.s .nm span{background:var(--navy)}
 .mc-sens-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.5);font-size:7px}
 .mc-sens-cell.mc-sens-hl{color:rgba(37,99,235,.8);font-weight:700;background:rgba(37,99,235,.08)}
 
-/* Waterfall chart */
-.mc-waterfall{display:flex;align-items:flex-end;gap:4px;height:80px;padding-top:8px;position:relative}
-.mc-wf-bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
+/* Waterfall chart — true bridge layout */
+.mc-waterfall{display:flex;gap:4px;height:80px;padding-top:8px;position:relative;align-items:flex-end}
+.mc-wf-bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;justify-content:flex-end}
 .mc-wf-bar{width:100%;border-radius:2px 2px 0 0;min-height:4px;transition:height .3s ease}
 .mc-wf-bar.mc-wf-pos{background:rgba(37,99,235,.5)}
 .mc-wf-bar.mc-wf-neg{background:rgba(239,68,68,.5);border-radius:0 0 2px 2px}
@@ -530,22 +530,22 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
                 <div class="mc-wf-bar mc-wf-pos" style="height:28px"></div>
                 <div class="mc-wf-label">Entry</div>
               </div>
-              <div class="mc-wf-bar-wrap">
+              <div class="mc-wf-bar-wrap" style="padding-bottom:28px">
                 <div class="mc-wf-val">+0.6x</div>
                 <div class="mc-wf-bar mc-wf-pos" style="height:18px"></div>
                 <div class="mc-wf-label">Rev<br>Growth</div>
               </div>
-              <div class="mc-wf-bar-wrap">
+              <div class="mc-wf-bar-wrap" style="padding-bottom:46px">
                 <div class="mc-wf-val">+0.3x</div>
                 <div class="mc-wf-bar mc-wf-pos" style="height:10px"></div>
                 <div class="mc-wf-label">Margin</div>
               </div>
-              <div class="mc-wf-bar-wrap">
+              <div class="mc-wf-bar-wrap" style="padding-bottom:56px">
                 <div class="mc-wf-val">+0.4x</div>
                 <div class="mc-wf-bar mc-wf-pos" style="height:14px"></div>
                 <div class="mc-wf-label">De-<br>lever</div>
               </div>
-              <div class="mc-wf-bar-wrap">
+              <div class="mc-wf-bar-wrap" style="padding-bottom:62px">
                 <div class="mc-wf-val">-0.2x</div>
                 <div class="mc-wf-bar mc-wf-neg" style="height:8px"></div>
                 <div class="mc-wf-label">Multi-<br>ple</div>
