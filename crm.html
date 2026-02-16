@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Dogan Advisory — Outreach CRM</title>
 <style>
 :root{--navy:#0B1829;--blue:#2563EB;--green:#22C55E;--amber:#F59E0B;--red:#EF4444;--gray:#6B7A8D;--bg:#F8F9FB;--white:#FFF;--bdr:#E2E7ED;--sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif}
@@ -76,9 +77,23 @@ td input:focus{border-color:var(--blue);background:var(--white);outline:none}
 .pipe-won .pipe-count{color:var(--green)}
 .pipe-lost .pipe-count{color:var(--red)}
 .date-cell{font-size:11px;color:var(--gray);white-space:nowrap}
+.app{display:none}
+.auth-gate{position:fixed;inset:0;z-index:9999;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px}
+.auth-gate.hidden{display:none}
+.auth-gate h2{font-family:var(--sans);font-size:18px;color:#fff;font-weight:600;letter-spacing:1px}
+.auth-gate input{padding:10px 16px;border:1px solid rgba(255,255,255,.15);border-radius:6px;background:rgba(255,255,255,.06);color:#fff;font-family:var(--sans);font-size:14px;width:260px;outline:none;text-align:center}
+.auth-gate input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.auth-gate button{padding:10px 24px;background:#fff;color:var(--navy);border:none;border-radius:6px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.auth-gate .auth-err{color:#EF4444;font-size:12px;min-height:16px}
 </style>
 </head>
 <body>
+<div class="auth-gate" id="authGate">
+  <h2>Dogan Advisory CRM</h2>
+  <input type="password" id="authPass" placeholder="Enter password" autofocus>
+  <button onclick="tryAuth()">Unlock</button>
+  <div class="auth-err" id="authErr"></div>
+</div>
 <div class="app">
   <header>
     <h1>Dogan Advisory <span>CRM</span></h1>
@@ -188,6 +203,13 @@ td input:focus{border-color:var(--blue);background:var(--white);outline:none}
 </div>
 
 <script>
+var AUTH_HASH='9ca6a0fa713ba069b0046f6c91b8e2fa7e2a07c473eb536bcf52ed1f155dbf18';
+async function hashStr(s){var e=new TextEncoder().encode(s);var h=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0')}).join('')}
+function unlock(){document.getElementById('authGate').classList.add('hidden');document.querySelector('.app').style.display='';sessionStorage.setItem('crm_auth','1')}
+async function tryAuth(){var p=document.getElementById('authPass').value;var h=await hashStr(p);if(h===AUTH_HASH){unlock()}else{document.getElementById('authErr').textContent='Incorrect password.'}}
+document.getElementById('authPass').addEventListener('keydown',function(e){if(e.key==='Enter')tryAuth()});
+if(sessionStorage.getItem('crm_auth')==='1'){unlock()}
+
 var DB_KEY='dogan_crm_prospects';
 var prospects=[];
 var sortField='company';
