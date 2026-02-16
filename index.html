@@ -27,7 +27,7 @@ body:not(.de) .lang-de{display:none!important}
 body.de .lang-en{display:none!important}
 
 /* === LANG TOGGLE === */
-.lt{position:fixed;top:20px;right:24px;z-index:200;display:flex;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px}
+.lt{position:relative;display:flex;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px;margin-left:12px;flex-shrink:0}
 .lt.s{background:var(--white);border-color:var(--bdr);box-shadow:0 1px 6px rgba(11,24,41,.06)}
 .ltb{padding:4px 10px;border:none;background:0;color:rgba(255,255,255,.35);font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:.3s}
 .lt.s .ltb{color:var(--txt3)}.ltb.a{background:#fff;color:var(--navy)}.lt.s .ltb.a{background:var(--navy);color:#fff}
@@ -362,10 +362,6 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 </head>
 <body>
 
-<div class="lt" id="lt">
-  <button class="ltb a" data-lang="en" onclick="L('en')">EN</button>
-  <button class="ltb" data-lang="de" onclick="L('de')">DE</button>
-</div>
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <a href="#services" onclick="closeDrawer()"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
@@ -390,6 +386,10 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
     <li><a href="#engagement"><span class="lang-en">Engagement</span><span class="lang-de">Konditionen</span></a></li>
   </ul>
   <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="nc"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch buchen</span></a>
+  <div class="lt" id="lt">
+    <button class="ltb a" data-lang="en" onclick="L('en')">EN</button>
+    <button class="ltb" data-lang="de" onclick="L('de')">DE</button>
+  </div>
   <button class="nm" id="menuBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
 </nav>
 
