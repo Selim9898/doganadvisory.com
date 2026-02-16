@@ -909,7 +909,7 @@ function L(l){
 })();
 function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('menuBtn').classList.toggle('open')}
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('menuBtn').classList.remove('open')}
-var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:0.01,rootMargin:'0px 0px 80px 0px'});
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px 200px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 window.addEventListener('scroll',function(){var s=window.scrollY>50;document.getElementById('nav').classList.toggle('s',s);document.getElementById('lt').classList.toggle('s',s)});
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});closeDrawer()})});

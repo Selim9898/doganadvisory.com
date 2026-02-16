@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dogan Advisory — Outreach CRM</title>
+<style>
+:root{--navy:#0B1829;--blue:#2563EB;--green:#22C55E;--amber:#F59E0B;--red:#EF4444;--gray:#6B7A8D;--bg:#F8F9FB;--white:#FFF;--bdr:#E2E7ED;--sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--navy);font-size:13px;line-height:1.5}
+a{color:var(--blue);text-decoration:none}
+.app{max-width:1200px;margin:0 auto;padding:20px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--bdr)}
+header h1{font-size:20px;font-weight:700;letter-spacing:-.5px}
+header h1 span{color:var(--blue);font-weight:400}
+.stats{display:flex;gap:16px}
+.stat{background:var(--white);border:1px solid var(--bdr);border-radius:8px;padding:12px 20px;text-align:center;min-width:90px}
+.stat-val{font-size:22px;font-weight:700;color:var(--navy);line-height:1}
+.stat-label{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.toolbar{display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+.toolbar input[type="text"]{flex:1;min-width:200px;padding:8px 12px;border:1px solid var(--bdr);border-radius:6px;font-family:var(--sans);font-size:13px;outline:none}
+.toolbar input[type="text"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
+.toolbar select{padding:8px 12px;border:1px solid var(--bdr);border-radius:6px;font-family:var(--sans);font-size:13px;background:var(--white);cursor:pointer}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:#1a2d47}
+.btn-export{background:var(--white);color:var(--navy);border:1px solid var(--bdr)}.btn-export:hover{border-color:var(--navy)}
+.btn-danger{background:var(--white);color:var(--red);border:1px solid var(--bdr)}.btn-danger:hover{border-color:var(--red)}
+table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--bdr);border-radius:8px;overflow:hidden}
+thead{background:var(--navy);color:var(--white)}
+th{padding:10px 12px;text-align:left;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+th.sortable{cursor:pointer;user-select:none}
+th.sortable:hover{background:rgba(255,255,255,.08)}
+th .sort-arrow{margin-left:4px;opacity:.4}
+td{padding:10px 12px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover{background:rgba(37,99,235,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.badge-new{background:rgba(37,99,235,.08);color:var(--blue)}
+.badge-contacted{background:rgba(245,158,11,.08);color:var(--amber)}
+.badge-replied{background:rgba(34,197,94,.08);color:var(--green)}
+.badge-meeting{background:rgba(139,92,246,.08);color:#8B5CF6}
+.badge-won{background:rgba(34,197,94,.15);color:var(--green)}
+.badge-lost{background:rgba(239,68,68,.08);color:var(--red)}
+.badge-declined{background:rgba(107,122,141,.08);color:var(--gray)}
+td select{padding:4px 8px;border:1px solid var(--bdr);border-radius:4px;font-family:var(--sans);font-size:12px;cursor:pointer;background:var(--white)}
+td input{padding:4px 8px;border:1px solid transparent;border-radius:4px;font-family:var(--sans);font-size:12px;width:100%;background:transparent}
+td input:hover{border-color:var(--bdr)}
+td input:focus{border-color:var(--blue);background:var(--white);outline:none}
+.notes-cell{max-width:200px}
+.notes-cell input{width:100%}
+.actions{display:flex;gap:4px}
+.actions button{background:none;border:1px solid var(--bdr);border-radius:4px;padding:4px 8px;cursor:pointer;font-size:11px;color:var(--gray);transition:.2s}
+.actions button:hover{border-color:var(--navy);color:var(--navy)}
+.actions button.del:hover{border-color:var(--red);color:var(--red)}
+.empty{text-align:center;padding:60px 20px;color:var(--gray)}
+.empty p{margin-top:8px;font-size:14px}
+/* Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;display:none;align-items:center;justify-content:center}
+.modal-bg.open{display:flex}
+.modal{background:var(--white);border-radius:12px;padding:28px;width:480px;max-width:90vw;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.modal h2{font-size:16px;margin-bottom:20px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--gray);margin-bottom:4px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:8px 12px;border:1px solid var(--bdr);border-radius:6px;font-family:var(--sans);font-size:13px}
+.form-row textarea{resize:vertical;min-height:60px}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+.pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-bottom:20px;background:var(--bdr);border-radius:8px;overflow:hidden}
+.pipe-col{background:var(--white);padding:8px;text-align:center;min-height:40px}
+.pipe-col .pipe-label{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+.pipe-col .pipe-count{font-size:20px;font-weight:700;line-height:1.2}
+.pipe-new .pipe-count{color:var(--blue)}
+.pipe-contacted .pipe-count{color:var(--amber)}
+.pipe-replied .pipe-count{color:var(--green)}
+.pipe-meeting .pipe-count{color:#8B5CF6}
+.pipe-won .pipe-count{color:var(--green)}
+.pipe-lost .pipe-count{color:var(--red)}
+.date-cell{font-size:11px;color:var(--gray);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Dogan Advisory <span>CRM</span></h1>
+    <div class="stats">
+      <div class="stat"><div class="stat-val" id="statTotal">0</div><div class="stat-label">Total</div></div>
+      <div class="stat"><div class="stat-val" id="statOpen">0</div><div class="stat-label">Open</div></div>
+      <div class="stat"><div class="stat-val" id="statReplied">0</div><div class="stat-label">Replied</div></div>
+      <div class="stat"><div class="stat-val" id="statWon">0</div><div class="stat-label">Won</div></div>
+    </div>
+  </header>
+
+  <div class="pipeline">
+    <div class="pipe-col pipe-new"><div class="pipe-count" id="pipeNew">0</div><div class="pipe-label">New</div></div>
+    <div class="pipe-col pipe-contacted"><div class="pipe-count" id="pipeContacted">0</div><div class="pipe-label">Contacted</div></div>
+    <div class="pipe-col pipe-replied"><div class="pipe-count" id="pipeReplied">0</div><div class="pipe-label">Replied</div></div>
+    <div class="pipe-col pipe-meeting"><div class="pipe-count" id="pipeMeeting">0</div><div class="pipe-label">Meeting</div></div>
+    <div class="pipe-col pipe-won"><div class="pipe-count" id="pipeWon">0</div><div class="pipe-label">Won</div></div>
+    <div class="pipe-col pipe-lost"><div class="pipe-count" id="pipeLost">0</div><div class="pipe-label">Lost</div></div>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" id="searchBox" placeholder="Search by company, contact, email...">
+    <select id="filterStatus">
+      <option value="">All Statuses</option>
+      <option value="new">New</option>
+      <option value="contacted">Contacted</option>
+      <option value="replied">Replied</option>
+      <option value="meeting">Meeting Set</option>
+      <option value="won">Won</option>
+      <option value="lost">Lost / Declined</option>
+    </select>
+    <select id="filterRegion">
+      <option value="">All Regions</option>
+      <option value="germany">Germany</option>
+      <option value="gcc">GCC</option>
+      <option value="uk">UK</option>
+      <option value="nordics">Nordics</option>
+      <option value="other">Other</option>
+    </select>
+    <button class="btn btn-primary" onclick="openModal()">+ Add Prospect</button>
+    <button class="btn btn-export" onclick="exportCSV()">Export CSV</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="sortable" onclick="sortBy('company')">Company <span class="sort-arrow">&#9650;</span></th>
+        <th class="sortable" onclick="sortBy('contact')">Contact</th>
+        <th>Email</th>
+        <th>Region</th>
+        <th class="sortable" onclick="sortBy('status')">Status</th>
+        <th class="sortable" onclick="sortBy('lastContact')">Last Contact</th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div class="empty" id="emptyState" style="display:none">
+    <p>No prospects yet. Click <strong>+ Add Prospect</strong> to start tracking outreach.</p>
+  </div>
+</div>
+
+<!-- Add/Edit Modal -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h2 id="modalTitle">Add Prospect</h2>
+    <input type="hidden" id="editId">
+    <div class="form-row"><label>Company Name *</label><input type="text" id="fCompany" placeholder="e.g. TechCo GmbH"></div>
+    <div class="form-row"><label>Contact Person</label><input type="text" id="fContact" placeholder="e.g. Max Mustermann"></div>
+    <div class="form-row"><label>Email *</label><input type="email" id="fEmail" placeholder="e.g. max@techco.de"></div>
+    <div class="form-row"><label>Phone</label><input type="text" id="fPhone" placeholder="e.g. +49 170 123 4567"></div>
+    <div class="form-row"><label>Region</label>
+      <select id="fRegion">
+        <option value="germany">Germany</option>
+        <option value="gcc">GCC</option>
+        <option value="uk">UK</option>
+        <option value="nordics">Nordics</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-row"><label>Type</label>
+      <select id="fType">
+        <option value="sme">SME</option>
+        <option value="vc-backed">VC-Backed</option>
+        <option value="pe-fund">PE Fund</option>
+        <option value="corporate">Corporate</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-row"><label>Status</label>
+      <select id="fStatus">
+        <option value="new">New</option>
+        <option value="contacted">Contacted</option>
+        <option value="replied">Replied</option>
+        <option value="meeting">Meeting Set</option>
+        <option value="won">Won</option>
+        <option value="lost">Lost / Declined</option>
+      </select>
+    </div>
+    <div class="form-row"><label>Notes</label><textarea id="fNotes" placeholder="Any context, deal size, follow-up plan..."></textarea></div>
+    <div class="form-actions">
+      <button class="btn btn-export" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProspect()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var DB_KEY='dogan_crm_prospects';
+var prospects=[];
+var sortField='company';
+var sortDir=1;
+
+function load(){try{var d=localStorage.getItem(DB_KEY);if(d)prospects=JSON.parse(d)}catch(e){prospects=[]}}
+function save(){try{localStorage.setItem(DB_KEY,JSON.stringify(prospects))}catch(e){}}
+
+function genId(){return Date.now().toString(36)+Math.random().toString(36).substr(2,5)}
+
+function render(){
+  var search=(document.getElementById('searchBox').value||'').toLowerCase();
+  var fStatus=document.getElementById('filterStatus').value;
+  var fRegion=document.getElementById('filterRegion').value;
+
+  var filtered=prospects.filter(function(p){
+    if(fStatus&&p.status!==fStatus)return false;
+    if(fRegion&&p.region!==fRegion)return false;
+    if(search){
+      var hay=(p.company+' '+p.contact+' '+p.email+' '+p.notes).toLowerCase();
+      if(hay.indexOf(search)===-1)return false;
+    }
+    return true;
+  });
+
+  filtered.sort(function(a,b){
+    var va=a[sortField]||'';var vb=b[sortField]||'';
+    if(va<vb)return -1*sortDir;if(va>vb)return 1*sortDir;return 0;
+  });
+
+  var tbody=document.getElementById('tableBody');
+  var html='';
+  filtered.forEach(function(p){
+    var badgeClass='badge-'+p.status.replace(/ /g,'');
+    var statusLabel={new:'New',contacted:'Contacted',replied:'Replied',meeting:'Meeting',won:'Won',lost:'Lost'}[p.status]||p.status;
+    var regionLabel={germany:'Germany',gcc:'GCC',uk:'UK',nordics:'Nordics',other:'Other'}[p.region]||p.region;
+    var lastContact=p.lastContact?formatDate(p.lastContact):'—';
+
+    html+='<tr>';
+    html+='<td><strong>'+esc(p.company)+'</strong>'+(p.type?' <span style="font-size:10px;color:#9AA4B2">'+esc(p.type)+'</span>':'')+'</td>';
+    html+='<td>'+esc(p.contact||'—')+'</td>';
+    html+='<td><a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a></td>';
+    html+='<td>'+esc(regionLabel)+'</td>';
+    html+='<td><select onchange="updateStatus(\''+p.id+'\',this.value)" style="font-size:11px">';
+    ['new','contacted','replied','meeting','won','lost'].forEach(function(s){
+      html+='<option value="'+s+'"'+(p.status===s?' selected':'')+'>'+s.charAt(0).toUpperCase()+s.slice(1)+'</option>';
+    });
+    html+='</select></td>';
+    html+='<td class="date-cell">'+lastContact+'</td>';
+    html+='<td class="notes-cell"><input value="'+esc(p.notes||'')+'" onchange="updateNotes(\''+p.id+'\',this.value)" placeholder="Add notes..."></td>';
+    html+='<td class="actions"><button onclick="editProspect(\''+p.id+'\')">Edit</button><button class="del" onclick="deleteProspect(\''+p.id+'\')">Del</button></td>';
+    html+='</tr>';
+  });
+  tbody.innerHTML=html;
+  document.getElementById('emptyState').style.display=filtered.length?'none':'block';
+
+  // Update stats
+  var counts={new:0,contacted:0,replied:0,meeting:0,won:0,lost:0};
+  prospects.forEach(function(p){counts[p.status]=(counts[p.status]||0)+1});
+  document.getElementById('statTotal').textContent=prospects.length;
+  document.getElementById('statOpen').textContent=counts.new+counts.contacted;
+  document.getElementById('statReplied').textContent=counts.replied+counts.meeting;
+  document.getElementById('statWon').textContent=counts.won;
+  document.getElementById('pipeNew').textContent=counts.new;
+  document.getElementById('pipeContacted').textContent=counts.contacted;
+  document.getElementById('pipeReplied').textContent=counts.replied;
+  document.getElementById('pipeMeeting').textContent=counts.meeting;
+  document.getElementById('pipeWon').textContent=counts.won;
+  document.getElementById('pipeLost').textContent=counts.lost;
+}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function formatDate(d){if(!d)return'—';var dt=new Date(d);return dt.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}
+
+function sortBy(field){
+  if(sortField===field)sortDir*=-1;else{sortField=field;sortDir=1}
+  render();
+}
+
+function updateStatus(id,val){
+  var p=prospects.find(function(x){return x.id===id});
+  if(p){p.status=val;p.lastContact=new Date().toISOString();save();render()}
+}
+
+function updateNotes(id,val){
+  var p=prospects.find(function(x){return x.id===id});
+  if(p){p.notes=val;save()}
+}
+
+function openModal(id){
+  document.getElementById('editId').value=id||'';
+  document.getElementById('modalTitle').textContent=id?'Edit Prospect':'Add Prospect';
+  if(id){
+    var p=prospects.find(function(x){return x.id===id});
+    if(p){
+      document.getElementById('fCompany').value=p.company;
+      document.getElementById('fContact').value=p.contact||'';
+      document.getElementById('fEmail').value=p.email;
+      document.getElementById('fPhone').value=p.phone||'';
+      document.getElementById('fRegion').value=p.region||'germany';
+      document.getElementById('fType').value=p.type||'sme';
+      document.getElementById('fStatus').value=p.status||'new';
+      document.getElementById('fNotes').value=p.notes||'';
+    }
+  }else{
+    ['fCompany','fContact','fEmail','fPhone','fNotes'].forEach(function(f){document.getElementById(f).value=''});
+    document.getElementById('fRegion').value='germany';
+    document.getElementById('fType').value='sme';
+    document.getElementById('fStatus').value='new';
+  }
+  document.getElementById('modalBg').classList.add('open');
+}
+
+function closeModal(){
+  document.getElementById('modalBg').classList.remove('open');
+}
+
+function saveProspect(){
+  var company=document.getElementById('fCompany').value.trim();
+  var email=document.getElementById('fEmail').value.trim();
+  if(!company||!email){alert('Company and Email are required.');return}
+  var id=document.getElementById('editId').value;
+  var now=new Date().toISOString();
+  if(id){
+    var p=prospects.find(function(x){return x.id===id});
+    if(p){
+      p.company=company;
+      p.contact=document.getElementById('fContact').value.trim();
+      p.email=email;
+      p.phone=document.getElementById('fPhone').value.trim();
+      p.region=document.getElementById('fRegion').value;
+      p.type=document.getElementById('fType').value;
+      p.status=document.getElementById('fStatus').value;
+      p.notes=document.getElementById('fNotes').value.trim();
+      p.updatedAt=now;
+    }
+  }else{
+    prospects.push({
+      id:genId(),
+      company:company,
+      contact:document.getElementById('fContact').value.trim(),
+      email:email,
+      phone:document.getElementById('fPhone').value.trim(),
+      region:document.getElementById('fRegion').value,
+      type:document.getElementById('fType').value,
+      status:document.getElementById('fStatus').value,
+      notes:document.getElementById('fNotes').value.trim(),
+      lastContact:null,
+      createdAt:now,
+      updatedAt:now
+    });
+  }
+  save();closeModal();render();
+}
+
+function editProspect(id){openModal(id)}
+
+function deleteProspect(id){
+  if(!confirm('Delete this prospect?'))return;
+  prospects=prospects.filter(function(x){return x.id!==id});
+  save();render();
+}
+
+function exportCSV(){
+  if(!prospects.length){alert('No data to export.');return}
+  var cols=['company','contact','email','phone','region','type','status','notes','lastContact','createdAt'];
+  var csv=cols.join(',')+'\n';
+  prospects.forEach(function(p){
+    csv+=cols.map(function(c){return '"'+(p[c]||'').replace(/"/g,'""')+'"'}).join(',')+'\n';
+  });
+  var blob=new Blob([csv],{type:'text/csv'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='dogan_crm_export_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+// Init
+load();
+render();
+document.getElementById('searchBox').addEventListener('input',render);
+document.getElementById('filterStatus').addEventListener('change',render);
+document.getElementById('filterRegion').addEventListener('change',render);
+</script>
+</body>
+</html>
