@@ -50,6 +50,7 @@ nav.s .brand-sub{color:var(--txt3)}
 .nl a{color:rgba(255,255,255,.4);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;transition:.3s}
 .nl a:hover{color:rgba(255,255,255,.8)}
 nav.s .nl a{color:var(--txt2)}nav.s .nl a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .nc{padding:7px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);transition:.3s}
 .nc:hover{background:rgba(255,255,255,.14);color:#fff}
 nav.s .nc{background:var(--navy);border-color:var(--navy);color:#fff}
@@ -322,7 +323,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.rv.v{opacity:1;transform:translateY(0)}
 
 @media(max-width:960px){
-  nav{padding:0 20px;height:56px}.nl,.nc{display:none}.nm{display:block}.lt{right:52px}
+  nav{padding:0 20px;height:56px}.nl,.nc{display:none}.nm{display:block}
   .hero{padding:100px 20px 60px;min-height:auto}
   .hero-grid{grid-template-columns:1fr;gap:28px;text-align:center}
   .hero-left{text-align:center}.hero-counters{justify-content:center;gap:20px;flex-wrap:wrap}.hc{text-align:center}
@@ -378,7 +379,6 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 </div>
 <nav id="nav">
   <a href="#" class="brand">
-    <svg class="brand-mark" viewBox="0 0 56 56" fill="none"><path class="mark-d" d="M4 4h20c15.5 0 28 12.5 28 28s-12.5 28-28 28H4V4z"/><line class="mark-line" x1="15" y1="48" x2="40" y2="12"/><circle class="mark-dot" cx="15" cy="48" r="2.5"/></svg>
     <div class="brand-wordmark">
       <span class="brand-name">Dogan</span>
       <span class="brand-sub">Advisory</span>
@@ -391,12 +391,14 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
     <li><a href="#about"><span class="lang-en">About</span><span class="lang-de">Über uns</span></a></li>
     <li><a href="#engagement"><span class="lang-en">Engagement</span><span class="lang-de">Konditionen</span></a></li>
   </ul>
-  <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="nc"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch buchen</span></a>
-  <div class="lt" id="lt">
-    <button class="ltb a" data-lang="en" onclick="L('en')">EN</button>
-    <button class="ltb" data-lang="de" onclick="L('de')">DE</button>
+  <div class="nav-right">
+    <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="nc"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch buchen</span></a>
+    <div class="lt" id="lt">
+      <button class="ltb a" data-lang="en" onclick="L('en')">EN</button>
+      <button class="ltb" data-lang="de" onclick="L('de')">DE</button>
+    </div>
+    <button class="nm" id="menuBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
   </div>
-  <button class="nm" id="menuBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="hero" id="hero-section">
@@ -907,7 +909,7 @@ function L(l){
 })();
 function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('menuBtn').classList.toggle('open')}
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('menuBtn').classList.remove('open')}
-var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:0.08});
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:0.01,rootMargin:'0px 0px 80px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 window.addEventListener('scroll',function(){var s=window.scrollY>50;document.getElementById('nav').classList.toggle('s',s);document.getElementById('lt').classList.toggle('s',s)});
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});closeDrawer()})});
