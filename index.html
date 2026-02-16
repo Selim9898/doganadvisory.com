@@ -94,7 +94,7 @@ nav.s .nm span{background:var(--navy)}
 /* === HERO CARDS — 3-card pitch-book stack === */
 .hero-right{display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeUp .8s ease forwards .5s}
 .model-stack{position:relative;width:380px;height:420px;perspective:900px}
-.model-card{position:absolute;width:340px;border-radius:12px;background:rgba(8,16,32,.65);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.03) inset;transition:transform .6s cubic-bezier(.23,1,.32,1),box-shadow .6s ease;cursor:default}
+.model-card{position:absolute;width:340px;border-radius:12px;background:rgba(8,16,32,.65);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(28px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04) inset;transition:transform .6s cubic-bezier(.23,1,.32,1),box-shadow .6s ease;cursor:default}
 .model-card::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.03) 0%,transparent 40%);pointer-events:none;border-radius:12px}
 .model-card .mc-shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);pointer-events:none;z-index:5}
 .model-card:hover .mc-shimmer{left:160%;transition:left 1.2s ease}
@@ -156,62 +156,11 @@ nav.s .nm span{background:var(--navy)}
 /* Glow underneath cards */
 .mc-glow{position:absolute;bottom:-40px;left:50%;width:260px;height:100px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(37,99,235,.08),transparent 70%);pointer-events:none;filter:blur(40px)}
 
-/* === HERO CARD PREMIUM ENHANCEMENTS === */
-/* Enhanced glass-morphism */
-.model-card{backdrop-filter:blur(32px) saturate(1.3);-webkit-backdrop-filter:blur(32px) saturate(1.3);background:rgba(8,16,32,.55);border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05) inset,0 0 40px rgba(37,99,235,.03) inset}
-.model-card:hover{box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08) inset,0 0 60px rgba(37,99,235,.08) inset,0 0 80px rgba(37,99,235,.06)}
-
-/* Pulsing glow accent line at bottom of each card */
-.mc-accent-glow{position:absolute;bottom:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,rgba(37,99,235,.4),rgba(37,99,235,.6),rgba(37,99,235,.4),transparent);border-radius:2px;animation:accentPulse 3s ease-in-out infinite;z-index:6}
-.mc-2 .mc-accent-glow{animation-delay:.8s}
-.mc-3 .mc-accent-glow{animation-delay:1.6s}
-@keyframes accentPulse{0%,100%{opacity:.3;transform:scaleX(.85)}50%{opacity:.8;transform:scaleX(1)}}
-
-/* Progress indicator bar */
-.mc-progress{height:2px;background:rgba(255,255,255,.04);margin:6px 0 2px;border-radius:1px;overflow:hidden;position:relative}
-.mc-progress-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,rgba(37,99,235,.25),rgba(37,99,235,.5));position:relative}
-.mc-progress-fill::after{content:'';position:absolute;right:0;top:-1px;width:4px;height:4px;background:rgba(37,99,235,.7);border-radius:50%;box-shadow:0 0 6px rgba(37,99,235,.5)}
-
-/* Sparkle / pulse dots at highlighted data points */
-.mc-hl,.mc-sens-hl{position:relative}
-.mc-sparkle{position:absolute;top:1px;right:1px;width:3px;height:3px;background:rgba(37,99,235,.6);border-radius:50%;animation:sparkle 2.5s ease-in-out infinite;pointer-events:none}
-@keyframes sparkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
-
-/* Color-shift animation on highlighted values */
-@keyframes colorShift{0%,100%{color:rgba(37,99,235,.4)}33%{color:rgba(59,130,246,.55)}66%{color:rgba(37,99,235,.5)}}
-.mc-hl{animation:colorShift 4s ease-in-out infinite}
-.mc-sens-hl{animation:colorShift 4s ease-in-out 1s infinite}
-
-/* Waterfall bar gradients instead of flat */
-.mc-wf-bar.mc-wf-pos{background:linear-gradient(180deg,rgba(37,99,235,.45),rgba(37,99,235,.18))}
-.mc-wf-bar.mc-wf-neg{background:linear-gradient(180deg,rgba(239,68,68,.18),rgba(239,68,68,.4));border-radius:0 0 2px 2px}
-.mc-wf-bar.mc-wf-total{background:linear-gradient(180deg,rgba(34,197,94,.4),rgba(34,197,94,.15))}
-
-/* Live indicator pulsing dot in card bar area */
-.mc-live{display:flex;align-items:center;gap:4px;margin-left:8px}
-.mc-live-dot{width:4px;height:4px;background:#28C840;border-radius:50%;animation:livePulse 1.8s ease-in-out infinite;box-shadow:0 0 4px rgba(40,200,64,.4)}
-.mc-live-label{font-size:5.5px;letter-spacing:1px;text-transform:uppercase;font-family:var(--sans);font-weight:700;color:rgba(40,200,64,.35)}
-@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
-
-/* Floating micro-particles around card stack */
-.mc-particles{position:absolute;inset:-30px;pointer-events:none;z-index:0;overflow:hidden}
-.mc-particle{position:absolute;width:2px;height:2px;background:rgba(37,99,235,.25);border-radius:50%;animation:drift linear infinite}
-.mc-particle:nth-child(1){top:10%;left:5%;animation-duration:12s;animation-delay:0s}
-.mc-particle:nth-child(2){top:30%;right:8%;animation-duration:16s;animation-delay:2s;width:1.5px;height:1.5px;background:rgba(255,255,255,.08)}
-.mc-particle:nth-child(3){bottom:20%;left:12%;animation-duration:14s;animation-delay:4s}
-.mc-particle:nth-child(4){top:60%;right:15%;animation-duration:18s;animation-delay:1s;width:1px;height:1px;background:rgba(255,255,255,.06)}
-.mc-particle:nth-child(5){top:80%;left:40%;animation-duration:15s;animation-delay:3s;background:rgba(37,99,235,.15)}
-.mc-particle:nth-child(6){top:5%;right:30%;animation-duration:20s;animation-delay:5s;width:1.5px;height:1.5px;background:rgba(255,255,255,.05)}
-.mc-particle:nth-child(7){top:45%;left:2%;animation-duration:13s;animation-delay:6s;background:rgba(37,99,235,.2)}
-.mc-particle:nth-child(8){bottom:10%;right:5%;animation-duration:17s;animation-delay:2.5s;width:1px;height:1px;background:rgba(255,255,255,.07)}
-@keyframes drift{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-60px) translateX(20px);opacity:0}}
 
 @media(prefers-reduced-motion:reduce){
   .model-card{transform:none!important;transition:none!important}
-  .mc-shimmer,.mc-particles{display:none!important}
+  .mc-shimmer{display:none!important}
   .hero-ring,.hero-glow,.hero-glow-2{animation:none!important}
-  .mc-accent-glow,.mc-sparkle,.mc-live-dot,.mc-particle{animation:none!important}
-  .mc-hl,.mc-sens-hl{animation:none!important}
   .model-card:hover{transform:none!important;box-shadow:0 30px 80px rgba(0,0,0,.35)!important}
 }
 
@@ -239,9 +188,8 @@ nav.s .nm span{background:var(--navy)}
 .exp-bar{padding:56px 48px;background:var(--off);border-bottom:1px solid var(--bdr2);text-align:center}
 .exp-label{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:28px}
 .exp-track{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
-.exp-logo{height:20px;width:auto;opacity:.25;transition:opacity .3s}
-.exp-logo:hover{opacity:.5}
-.exp-logo text{transition:fill .3s}
+.exp-logo{height:20px;width:auto;opacity:.25;transition:opacity .3s;filter:grayscale(1)}
+.exp-logo:hover{opacity:.5;filter:grayscale(0)}
 
 /* === SERVICES === */
 .sv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);margin-top:52px}
@@ -280,6 +228,8 @@ nav.s .nm span{background:var(--navy)}
 .tx-logo-area{height:36px;margin-bottom:16px;display:flex;align-items:center}
 .tx-logo-area svg{max-height:28px;width:auto;opacity:.45;transition:opacity .3s}
 .tx:hover .tx-logo-area svg{opacity:.85}
+.tx-logo-area img{max-height:28px;width:auto;opacity:.45;transition:opacity .3s,filter .3s;filter:grayscale(1)}
+.tx:hover .tx-logo-area img{opacity:.85;filter:grayscale(0)}
 .tx-sec{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px}
 .tx-nm{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:6px;line-height:1.3}
 .tx-d{font-size:11.5px;color:var(--txt2);line-height:1.6;margin-bottom:10px;flex:1}
@@ -481,15 +431,12 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 1: LBO Returns (top, z-index 3) -->
         <div class="model-card mc-1">
           <div class="mc-shimmer"></div>
-          <div class="mc-accent-glow"></div>
           <div class="mc-scenario"><div class="mc-scenario-inner"><span class="mc-scn-base">Base Case</span><span class="mc-scn-down">Downside</span></div></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
-            <div class="mc-live"><span class="mc-live-dot"></span><span class="mc-live-label">Live</span></div>
             <div class="mc-title">LBO Returns</div>
           </div>
           <div class="mc-body">
-            <div class="mc-progress"><div class="mc-progress-fill" style="width:72%"></div></div>
             <div class="mc-grid">
               <div class="mc-grid-row mc-grid-header">
                 <div class="mc-grid-cell"></div>
@@ -499,19 +446,19 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
               </div>
               <div class="mc-grid-row">
                 <div class="mc-grid-cell">MoM</div>
-                <div class="mc-grid-cell mc-hl">2.4x<span class="mc-sparkle"></span></div>
+                <div class="mc-grid-cell mc-hl">2.4x</div>
                 <div class="mc-grid-cell">3.1x</div>
                 <div class="mc-grid-cell">1.6x</div>
               </div>
               <div class="mc-grid-row">
                 <div class="mc-grid-cell">IRR</div>
-                <div class="mc-grid-cell mc-hl">22.1%<span class="mc-sparkle" style="animation-delay:.6s"></span></div>
+                <div class="mc-grid-cell mc-hl">22.1%</div>
                 <div class="mc-grid-cell">28.4%</div>
                 <div class="mc-grid-cell">12.3%</div>
               </div>
               <div class="mc-grid-row">
                 <div class="mc-grid-cell">Equity</div>
-                <div class="mc-grid-cell mc-hl">$412m<span class="mc-sparkle" style="animation-delay:1.2s"></span></div>
+                <div class="mc-grid-cell mc-hl">$412m</div>
                 <div class="mc-grid-cell">$531m</div>
                 <div class="mc-grid-cell">$274m</div>
               </div>
@@ -522,14 +469,11 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 2: DCF Valuation (middle, z-index 2) -->
         <div class="model-card mc-2">
           <div class="mc-shimmer"></div>
-          <div class="mc-accent-glow"></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
-            <div class="mc-live"><span class="mc-live-dot"></span><span class="mc-live-label">Live</span></div>
             <div class="mc-title">DCF Valuation</div>
           </div>
           <div class="mc-body">
-            <div class="mc-progress"><div class="mc-progress-fill" style="width:45%"></div></div>
             <div class="mc-sens">
               <div class="mc-sens-row mc-sens-header">
                 <div class="mc-sens-cell">WACC \ g</div>
@@ -548,7 +492,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
               <div class="mc-sens-row">
                 <div class="mc-sens-cell">9.0%</div>
                 <div class="mc-sens-cell">$42.6</div>
-                <div class="mc-sens-cell mc-sens-hl">$45.8<span class="mc-sparkle"></span></div>
+                <div class="mc-sens-cell mc-sens-hl">$45.8</div>
                 <div class="mc-sens-cell">$49.4</div>
                 <div class="mc-sens-cell">$53.7</div>
               </div>
@@ -573,14 +517,11 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
         <!-- Card 3: Returns Waterfall (bottom, z-index 1) -->
         <div class="model-card mc-3">
           <div class="mc-shimmer"></div>
-          <div class="mc-accent-glow"></div>
           <div class="mc-bar">
             <div class="mc-dots"><span></span><span></span><span></span></div>
-            <div class="mc-live"><span class="mc-live-dot"></span><span class="mc-live-label">Live</span></div>
             <div class="mc-title">Returns Waterfall</div>
           </div>
           <div class="mc-body">
-            <div class="mc-progress"><div class="mc-progress-fill" style="width:88%"></div></div>
             <div class="mc-waterfall">
               <div class="mc-wf-bar-wrap">
                 <div class="mc-wf-val">1.0x</div>
@@ -616,17 +557,6 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
           </div>
         </div>
 
-        <!-- Floating micro-particles -->
-        <div class="mc-particles">
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-          <div class="mc-particle"></div>
-        </div>
         <div class="mc-glow"></div>
       </div>
     </div>
@@ -644,15 +574,15 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 <div class="exp-bar">
   <div class="exp-label"><span class="lang-en">Modelling Experience Alongside</span><span class="lang-de">Modelling-Erfahrung mit</span></div>
   <div class="exp-track">
-    <svg class="exp-logo" viewBox="0 0 120 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jefferies"><text x="0" y="16" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#3A4A60" letter-spacing=".5">Jefferies</text></svg>
-    <svg class="exp-logo" viewBox="0 0 140 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="J.P. Morgan"><text x="0" y="16" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing=".3">J.P. Morgan</text></svg>
-    <svg class="exp-logo" viewBox="0 0 170 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Goldman Sachs"><text x="0" y="16" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing=".3">Goldman Sachs</text></svg>
-    <svg class="exp-logo" viewBox="0 0 160 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nordic Capital"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">NORDIC CAPITAL</text></svg>
-    <svg class="exp-logo" viewBox="0 0 170 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Platinum Equity"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">PLATINUM EQUITY</text></svg>
-    <svg class="exp-logo" viewBox="0 0 46 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GBL"><text x="0" y="16" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#3A4A60" letter-spacing="1.5">GBL</text></svg>
-    <svg class="exp-logo" viewBox="0 0 140 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FSN Capital"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">FSN CAPITAL</text></svg>
-    <svg class="exp-logo" viewBox="0 0 68 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Altor"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing="1.5">ALTOR</text></svg>
-    <svg class="exp-logo" viewBox="0 0 80 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triton"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing="1.5">TRITON</text></svg>
+    <img class="exp-logo" src="https://logo.clearbit.com/jefferies.com" alt="Jefferies" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 120 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=15 font-weight=700 fill=#3A4A60 letter-spacing=.5>Jefferies</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/jpmorgan.com" alt="J.P. Morgan" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 140 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=14 font-weight=700 fill=#3A4A60>J.P. Morgan</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/goldmansachs.com" alt="Goldman Sachs" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 170 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=14 font-weight=700 fill=#3A4A60>Goldman Sachs</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/nordiccapital.com" alt="Nordic Capital" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 160 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=13 font-weight=600 fill=#3A4A60 letter-spacing=1>NORDIC CAPITAL</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/platinumequity.com" alt="Platinum Equity" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 170 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=13 font-weight=600 fill=#3A4A60 letter-spacing=1>PLATINUM EQUITY</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/gbl.be" alt="GBL" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 46 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=Georgia,serif font-size=16 font-weight=700 fill=#3A4A60 letter-spacing=1.5>GBL</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/fsncapital.com" alt="FSN Capital" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 140 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=13 font-weight=600 fill=#3A4A60 letter-spacing=1>FSN CAPITAL</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/altor.com" alt="Altor" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 68 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=14 font-weight=700 fill=#3A4A60 letter-spacing=1.5>ALTOR</text></svg>'">
+    <img class="exp-logo" src="https://logo.clearbit.com/triton-partners.com" alt="Triton" style="height:18px" onerror="this.outerHTML='<svg class=exp-logo viewBox=\'0 0 80 22\' xmlns=\'http://www.w3.org/2000/svg\'><text x=0 y=16 font-family=DM+Sans,sans-serif font-size=14 font-weight=700 fill=#3A4A60 letter-spacing=1.5>TRITON</text></svg>'">
   </div>
 </div>
 
@@ -706,7 +636,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Asyad" style="height:24px"><text x="0" y="20" font-family="Georgia,serif" font-size="20" font-weight="700" fill="#0B1829" letter-spacing="1">ASYAD</text></svg>
+          <img src="https://logo.clearbit.com/asyad.com" alt="Asyad" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 100 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:24px\'><text x=0 y=20 font-family=Georgia,serif font-size=20 font-weight=700 fill=#0B1829 letter-spacing=1>ASYAD</text></svg>'">
         </div>
         <div class="tx-sec">Maritime</div>
         <div class="tx-nm">Asyad Shipping Company</div>
@@ -716,7 +646,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <svg viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sunrise Medical" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="16" font-weight="700" fill="#0B1829" letter-spacing=".5">Sunrise Medical</text></svg>
+          <img src="https://logo.clearbit.com/sunrisemedical.com" alt="Sunrise Medical" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 200 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=DM+Sans,sans-serif font-size=16 font-weight=700 fill=#0B1829 letter-spacing=.5>Sunrise Medical</text></svg>'">
         </div>
         <div class="tx-sec">MedTech</div>
         <div class="tx-nm">Sunrise Medical Group</div>
@@ -726,7 +656,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A2Mac1" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="17" font-weight="700" fill="#0B1829" letter-spacing=".5">A2Mac1</text></svg>
+          <img src="https://logo.clearbit.com/a2mac1.com" alt="A2Mac1" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 110 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=DM+Sans,sans-serif font-size=17 font-weight=700 fill=#0B1829 letter-spacing=.5>A2Mac1</text></svg>'">
         </div>
         <div class="tx-sec">Technology</div>
         <div class="tx-nm">A2Mac1</div>
@@ -736,7 +666,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Affidea" style="height:22px"><text x="0" y="19" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#0B1829" letter-spacing=".3">Affidea</text></svg>
+          <img src="https://logo.clearbit.com/affidea.com" alt="Affidea" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 110 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=Georgia,serif font-size=18 font-weight=700 fill=#0B1829 letter-spacing=.3>Affidea</text></svg>'">
         </div>
         <div class="tx-sec">Healthcare Services</div>
         <div class="tx-nm">Affidea Group</div>
@@ -746,7 +676,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 
       <div class="tx">
         <div class="tx-logo-area">
-          <svg viewBox="0 0 140 28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OptiGroup" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="17" font-weight="700" fill="#0B1829" letter-spacing=".3">OptiGroup</text></svg>
+          <img src="https://logo.clearbit.com/optigroup.com" alt="OptiGroup" style="height:24px;width:auto" onerror="this.outerHTML='<svg viewBox=\'0 0 140 28\' xmlns=\'http://www.w3.org/2000/svg\' style=\'height:22px\'><text x=0 y=19 font-family=DM+Sans,sans-serif font-size=17 font-weight=700 fill=#0B1829 letter-spacing=.3>OptiGroup</text></svg>'">
         </div>
         <div class="tx-sec">Business Services</div>
         <div class="tx-nm">OptiGroup AB</div>
