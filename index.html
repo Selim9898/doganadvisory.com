@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
 <title>Dogan Advisory — Financial Modelling &amp; Transaction Advisory</title>
 <meta name="description" content="Dogan Advisory provides institutional-grade financial modelling, transaction advisory, and due-diligence support for VC-backed startups, PE funds, and SMEs across Europe and the GCC.">
 <meta name="author" content="Selim Dogan">
@@ -21,7 +21,10 @@
 <meta name="twitter:image" content="https://doganadvisory.com/assets/og-image.png">
 <!-- Structured Data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Dogan Advisory","url":"https://doganadvisory.com","description":"Institutional-grade financial modelling, transaction advisory, and due-diligence support for VC-backed startups, PE funds, and SMEs across Europe and the GCC.","founder":{"@type":"Person","name":"Selim Dogan"},"areaServed":["Europe","GCC"],"serviceType":["Financial Modelling","Transaction Advisory","Due Diligence"],"image":"https://doganadvisory.com/assets/og-image.png"}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Dogan Advisory","url":"https://doganadvisory.com","description":"Institutional-grade financial modelling, transaction advisory, and due-diligence support for VC-backed startups, PE funds, and SMEs across Europe and the GCC.","founder":{"@type":"Person","name":"Selim Dogan","sameAs":"https://www.linkedin.com/in/selim-dogan"},"areaServed":["Europe","GCC"],"serviceType":["Financial Modelling","Transaction Advisory","Due Diligence"],"image":"https://doganadvisory.com/assets/og-image.png","address":{"@type":"PostalAddress","addressLocality":"Dubai","addressCountry":"AE"},"contactPoint":{"@type":"ContactPoint","telephone":"+971585397047","contactType":"customer service","email":"selim.dogan@outlook.com"},"sameAs":["https://www.linkedin.com/in/selim-dogan"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What Do You Need From Us to Start?","acceptedAnswer":{"@type":"Answer","text":"Historical financials (2–3 years), a management case or business plan if available, and a brief on the intended use of the model. We can work with incomplete data and fill gaps during the build."}},{"@type":"Question","name":"How Fast Can You Deliver?","acceptedAnswer":{"@type":"Answer","text":"Standard operating models: 1–2 weeks. Valuation or LBO models: 3–5 business days. Model audits: 2–4 business days. Expedited delivery is available for live processes."}},{"@type":"Question","name":"Fixed Fee or Hourly?","acceptedAnswer":{"@type":"Answer","text":"Most projects are fixed-fee with scope defined upfront. For ongoing or open-ended engagements, we offer hourly arrangements. You always know the cost before work begins."}},{"@type":"Question","name":"How Many Revisions Are Included?","acceptedAnswer":{"@type":"Answer","text":"Every engagement includes one round of revisions within scope, plus 14 days of post-delivery support for minor adjustments and questions."}},{"@type":"Question","name":"How Do You Handle Confidentiality?","acceptedAnswer":{"@type":"Answer","text":"We sign NDAs as standard practice before receiving any data. All work product is stored securely and deleted upon project completion unless otherwise agreed."}},{"@type":"Question","name":"What Does Audit-Ready Mean in Practice?","acceptedAnswer":{"@type":"Answer","text":"Clear structure, consistent formatting, no hardcoded inputs in formulas, labelled assumptions, and an integrity-check tab. The model can go to a third-party reviewer without rework."}},{"@type":"Question","name":"Can You Help With Decks or Fractional CFO Work?","acceptedAnswer":{"@type":"Answer","text":"Yes, on an hourly basis depending on scope. Our core focus remains financial modelling, but we regularly support clients with investor materials and ad-hoc CFO-level analysis."}}]}
 </script>
 <link rel="icon" type="image/svg+xml" href="assets/logo/dogan-advisory-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,11 +67,11 @@ nav.s{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:
 nav.s .brand-name{color:var(--navy)}
 nav.s .brand-sub{color:var(--txt3)}
 .nl{display:flex;gap:26px;list-style:none}
-.nl a{color:rgba(255,255,255,.4);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;transition:.3s}
+.nl a{color:rgba(255,255,255,.5);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;transition:.3s}
 .nl a:hover{color:rgba(255,255,255,.8)}
 nav.s .nl a{color:var(--txt2)}nav.s .nl a:hover{color:var(--navy)}
 .nav-right{flex:1;display:flex;align-items:center;gap:10px;justify-content:flex-end}
-.nc{padding:7px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);transition:.3s}
+.nc{padding:7px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);transition:.3s}
 .nc:hover{background:rgba(255,255,255,.14);color:#fff}
 nav.s .nc{background:var(--navy);border-color:var(--navy);color:#fff}
 .nm{display:none;background:0;border:0;cursor:pointer;padding:8px;position:relative;z-index:10}
@@ -97,16 +100,16 @@ nav.s .nm span{background:var(--navy)}
 .hero-ring:nth-child(5)::before{background:rgba(255,255,255,.05)}.hero-ring:nth-child(6)::before{background:rgba(37,99,235,.1)}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:1200px;margin:0 auto;width:100%}
 .hero-left{text-align:left}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.5px;color:rgba(255,255,255,.35);margin-bottom:32px;opacity:0;animation:fadeUp .7s ease forwards .15s}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.5px;color:rgba(255,255,255,.5);margin-bottom:32px;opacity:0;animation:fadeUp .7s ease forwards .15s}
 .hero h1{font-family:var(--serif);font-size:clamp(36px,5.2vw,68px);font-weight:300;line-height:1.08;letter-spacing:-1px;color:#fff;opacity:0;animation:fadeUp .7s ease forwards .3s}
 .hero h1 strong{font-weight:700;position:relative}
 .hero h1 strong::after{content:'';position:absolute;bottom:.06em;left:0;right:0;height:2px;background:var(--blue);opacity:.35;border-radius:2px}
-.hero-p{font-size:15px;color:rgba(255,255,255,.35);max-width:480px;margin:22px 0 0;line-height:1.8;opacity:0;animation:fadeUp .7s ease forwards .45s}
+.hero-p{font-size:15px;color:rgba(255,255,255,.5);max-width:480px;margin:22px 0 0;line-height:1.8;opacity:0;animation:fadeUp .7s ease forwards .45s}
 .hero-ctas{display:flex;gap:14px;margin-top:36px;opacity:0;animation:fadeUp .7s ease forwards .6s}
 .bw{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#fff;color:var(--navy);border:none;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.35s}
 .bw:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .bw svg{width:13px;height:13px;transition:.3s}.bw:hover svg{transform:translateX(3px)}
-.bg{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:0;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.35s}
+.bg{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:0;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.35s}
 .bg:hover{color:#fff;border-color:rgba(255,255,255,.25)}
 .hero-counters{display:flex;gap:48px;margin-top:48px;padding-top:28px;border-top:1px solid rgba(255,255,255,.04);opacity:0;animation:fadeUp .7s ease forwards .75s}
 .hc{text-align:left}
@@ -336,6 +339,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding
 .sticky-cta a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:var(--navy);color:#fff;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:2px}
 .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.rv.v{opacity:1;transform:translateY(0)}
 
 @media(max-width:960px){
@@ -929,7 +933,7 @@ var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){i
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 window.addEventListener('scroll',function(){var s=window.scrollY>50;document.getElementById('nav').classList.toggle('s',s);document.getElementById('lt').classList.toggle('s',s)});
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});closeDrawer()})});
-function animateCounters(){document.querySelectorAll('.counter').forEach(function(c){var target=+c.dataset.target,dur=1400,start=performance.now();function step(now){var p=Math.min((now-start)/dur,1);c.textContent=Math.floor(p*target);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)})}
+function animateCounters(){var rm=window.matchMedia('(prefers-reduced-motion: reduce)');document.querySelectorAll('.counter').forEach(function(c){var target=+c.dataset.target;if(rm.matches){c.textContent=target;return}var dur=1400,start=performance.now();function step(now){var p=Math.min((now-start)/dur,1);c.textContent=Math.floor(p*target);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)})}
 setTimeout(animateCounters,800);
 (function(){var mql=window.matchMedia('(prefers-reduced-motion: reduce)');if(mql.matches)return;var hero=document.getElementById('hero-section');if(!hero)return;hero.addEventListener('mousemove',function(e){var rect=hero.getBoundingClientRect();var x=(e.clientX-rect.left)/rect.width-.5;var y=(e.clientY-rect.top)/rect.height-.5;hero.style.setProperty('--mx',x.toFixed(3));hero.style.setProperty('--my',y.toFixed(3))});hero.addEventListener('mouseleave',function(){hero.style.setProperty('--mx','0');hero.style.setProperty('--my','0')})})();
 </script>
