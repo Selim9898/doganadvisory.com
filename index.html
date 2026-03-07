@@ -28,7 +28,6 @@
 </script>
 <link rel="icon" type="image/svg+xml" href="assets/logo/dogan-advisory-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -36,7 +35,7 @@
   --white:#FFF;--off:#F6F7FA;
   --txt:#3A4A60;--txt2:#6B7A8D;--txt3:#9AA4B2;
   --bdr:#E2E7ED;--bdr2:#EDF0F5;
-  --blue:#2563EB;--blue-dim:rgba(37,99,235,.08);
+  --blue:#2563EB;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',-apple-system,sans-serif;
   --mx:0;--my:0;
@@ -47,31 +46,35 @@ body{background:var(--white);color:var(--txt);font-family:var(--sans);font-weigh
 ::selection{background:var(--navy);color:#fff}
 section[id]{scroll-margin-top:80px}
 
-/* === LANGUAGE === */
+/* === LANGUAGE — bulletproof: hide wrong lang, never touch display of right one === */
 body:not(.de) .lang-de{display:none!important}
 body.de .lang-en{display:none!important}
 
 /* === LANG TOGGLE === */
-.lt{position:relative;display:flex;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px;margin-left:12px;flex-shrink:0}
+.lt{position:fixed;top:20px;right:24px;z-index:200;display:flex;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px}
 .lt.s{background:var(--white);border-color:var(--bdr);box-shadow:0 1px 6px rgba(11,24,41,.06)}
 .ltb{padding:4px 10px;border:none;background:0;color:rgba(255,255,255,.35);font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:.3s}
 .lt.s .ltb{color:var(--txt3)}.ltb.a{background:#fff;color:var(--navy)}.lt.s .ltb.a{background:var(--navy);color:#fff}
 
 /* === NAV === */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;background:0;transition:.4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:0;transition:.4s}
 nav.s{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;transition:.3s;flex:1}
-.brand-wordmark{display:flex;flex-direction:column;line-height:1}
-.brand-name{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:2.5px;color:#fff;transition:.3s;text-transform:uppercase}
-.brand-sub{font-family:var(--sans);font-size:8px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:2px;transition:.3s;font-variant:small-caps}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;transition:.3s}
+.brand-mark{width:32px;height:32px;flex-shrink:0}
+.brand-mark .mark-bg{fill:none;stroke:rgba(255,255,255,.25);stroke-width:1.5}
+.brand-mark .mark-letter{fill:#fff;font-family:var(--serif);font-size:16px;font-weight:600}
+nav.s .brand-mark .mark-bg{stroke:var(--navy)}
+nav.s .brand-mark .mark-letter{fill:var(--navy)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#fff;transition:.3s}
+.brand-sub{font-family:var(--sans);font-size:8px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:1px;transition:.3s}
 nav.s .brand-name{color:var(--navy)}
 nav.s .brand-sub{color:var(--txt3)}
 .nl{display:flex;gap:26px;list-style:none}
-.nl a{color:rgba(255,255,255,.5);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;transition:.3s}
+.nl a{color:rgba(255,255,255,.4);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;transition:.3s}
 .nl a:hover{color:rgba(255,255,255,.8)}
 nav.s .nl a{color:var(--txt2)}nav.s .nl a:hover{color:var(--navy)}
-.nav-right{flex:1;display:flex;align-items:center;gap:10px;justify-content:flex-end}
-.nc{padding:7px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);transition:.3s}
+.nc{padding:7px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);transition:.3s}
 .nc:hover{background:rgba(255,255,255,.14);color:#fff}
 nav.s .nc{background:var(--navy);border-color:var(--navy);color:#fff}
 .nm{display:none;background:0;border:0;cursor:pointer;padding:8px;position:relative;z-index:10}
@@ -79,37 +82,33 @@ nav.s .nc{background:var(--navy);border-color:var(--navy);color:#fff}
 nav.s .nm span{background:var(--navy)}
 .nm.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}.nm.open span:nth-child(2){opacity:0}.nm.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98;opacity:0;pointer-events:none;transition:opacity .3s}.drawer-overlay.open{opacity:1;pointer-events:all}
-.drawer{position:fixed;top:0;right:-300px;width:300px;height:100vh;background:var(--navy);z-index:99;transition:right .35s ease;padding:80px 32px 32px;display:flex;flex-direction:column}.drawer.open{right:0}
+.drawer{position:fixed;top:0;right:-280px;width:280px;height:100vh;background:var(--navy);z-index:99;transition:right .35s ease;padding:80px 32px 32px;display:flex;flex-direction:column}.drawer.open{right:0}
 .drawer a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:.3s;display:block}.drawer a:hover{color:#fff}
 .drawer .drawer-cta{margin-top:24px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;background:#fff;color:var(--navy);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-bottom:none}
 
 /* === HERO === */
 .hero{min-height:100vh;position:relative;background:var(--navy);color:#fff;overflow:hidden;display:flex;align-items:center;padding:0 48px}
-.hero-noise{position:absolute;inset:0;opacity:.035;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:128px 128px}
-.hero-grid-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.04}
-.hero-grid-bg svg{position:absolute;top:50%;left:50%;width:1200px;height:1200px;transform:translate(-50%,-50%)}
-.hero-glow{position:absolute;top:50%;left:35%;width:900px;height:900px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);animation:glowPulse 6s ease-in-out infinite;pointer-events:none}
-.hero-glow-2{position:absolute;top:30%;right:5%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.04) 0%,transparent 70%);animation:glowPulse 8s ease-in-out 2s infinite;pointer-events:none}
+.hero-glow{position:absolute;top:50%;left:35%;width:900px;height:900px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.07) 0%,transparent 70%);animation:glowPulse 6s ease-in-out infinite;pointer-events:none}
 @keyframes glowPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1}50%{transform:translate(-50%,-50%) scale(1.15);opacity:.5}}
-.hero-ring{position:absolute;top:50%;left:35%;border-radius:50%;border:1px solid rgba(255,255,255,.02);pointer-events:none}
-.hero-ring:nth-child(4){width:500px;height:500px;margin:-250px 0 0 -250px;animation:spin 40s linear infinite}
-.hero-ring:nth-child(5){width:700px;height:700px;margin:-350px 0 0 -350px;animation:spin 60s linear infinite reverse}
-.hero-ring:nth-child(6){width:950px;height:950px;margin:-475px 0 0 -475px;animation:spin 80s linear infinite}
+.hero-ring{position:absolute;top:50%;left:35%;border-radius:50%;border:1px solid rgba(255,255,255,.025);pointer-events:none}
+.hero-ring:nth-child(2){width:500px;height:500px;margin:-250px 0 0 -250px;animation:spin 40s linear infinite}
+.hero-ring:nth-child(3){width:700px;height:700px;margin:-350px 0 0 -350px;animation:spin 60s linear infinite reverse}
+.hero-ring:nth-child(4){width:950px;height:950px;margin:-475px 0 0 -475px;animation:spin 80s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero-ring::before{content:'';position:absolute;top:0;left:50%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;background:rgba(37,99,235,.2);border-radius:50%}
-.hero-ring:nth-child(5)::before{background:rgba(255,255,255,.05)}.hero-ring:nth-child(6)::before{background:rgba(37,99,235,.1)}
+.hero-ring::before{content:'';position:absolute;top:0;left:50%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;background:rgba(37,99,235,.25);border-radius:50%}
+.hero-ring:nth-child(3)::before{background:rgba(255,255,255,.06)}.hero-ring:nth-child(4)::before{background:rgba(37,99,235,.12)}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:1200px;margin:0 auto;width:100%}
 .hero-left{text-align:left}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.5px;color:rgba(255,255,255,.5);margin-bottom:32px;opacity:0;animation:fadeUp .7s ease forwards .15s}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.5px;color:rgba(255,255,255,.35);margin-bottom:32px;opacity:0;animation:fadeUp .7s ease forwards .15s}
 .hero h1{font-family:var(--serif);font-size:clamp(36px,5.2vw,68px);font-weight:300;line-height:1.08;letter-spacing:-1px;color:#fff;opacity:0;animation:fadeUp .7s ease forwards .3s}
 .hero h1 strong{font-weight:700;position:relative}
 .hero h1 strong::after{content:'';position:absolute;bottom:.06em;left:0;right:0;height:2px;background:var(--blue);opacity:.35;border-radius:2px}
-.hero-p{font-size:15px;color:rgba(255,255,255,.5);max-width:480px;margin:22px 0 0;line-height:1.8;opacity:0;animation:fadeUp .7s ease forwards .45s}
+.hero-p{font-size:15px;color:rgba(255,255,255,.35);max-width:480px;margin:22px 0 0;line-height:1.8;opacity:0;animation:fadeUp .7s ease forwards .45s}
 .hero-ctas{display:flex;gap:14px;margin-top:36px;opacity:0;animation:fadeUp .7s ease forwards .6s}
 .bw{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#fff;color:var(--navy);border:none;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.35s}
 .bw:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .bw svg{width:13px;height:13px;transition:.3s}.bw:hover svg{transform:translateX(3px)}
-.bg{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:0;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.35s}
+.bg{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:0;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:.35s}
 .bg:hover{color:#fff;border-color:rgba(255,255,255,.25)}
 .hero-counters{display:flex;gap:48px;margin-top:48px;padding-top:28px;border-top:1px solid rgba(255,255,255,.04);opacity:0;animation:fadeUp .7s ease forwards .75s}
 .hc{text-align:left}
@@ -117,86 +116,47 @@ nav.s .nm span{background:var(--navy)}
 .hc-num .suf{font-size:20px;font-weight:400;opacity:.4;margin-left:2px}
 .hc-label{font-size:10px;color:rgba(255,255,255,.18);letter-spacing:2px;text-transform:uppercase;margin-top:5px}
 
-/* === HERO CARDS — 3-card pitch-book stack === */
+/* Hero model stack */
 .hero-right{display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeUp .8s ease forwards .5s}
-.model-stack{position:relative;width:380px;height:460px;perspective:900px}
-.model-card{position:absolute;width:340px;border-radius:12px;background:rgba(15,25,50,.92);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(28px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06) inset;transition:transform .6s cubic-bezier(.23,1,.32,1),box-shadow .6s ease;cursor:default}
-.model-card::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.03) 0%,transparent 40%);pointer-events:none;border-radius:12px}
-.model-card .mc-shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);pointer-events:none;z-index:5}
-.model-card:hover .mc-shimmer{left:160%;transition:left 1.2s ease}
-.model-card:hover{box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.1) inset,0 0 60px rgba(37,99,235,.1)}
-
-/* Card positioning — layered stack, each card peeks below the one above */
-.mc-1{top:0;left:15px;z-index:3;transform:rotateY(calc(var(--mx)*4deg)) rotateX(calc(var(--my)*-3deg))}
-.mc-2{top:130px;left:0;z-index:2;transform:rotateY(calc(var(--mx)*3deg)) rotateX(calc(var(--my)*-2.5deg))}
-.mc-3{top:260px;left:25px;z-index:1;transform:rotateY(calc(var(--mx)*2.5deg)) rotateX(calc(var(--my)*-2deg))}
-.mc-1:hover{z-index:10;transform:rotateY(calc(var(--mx)*4deg)) rotateX(calc(var(--my)*-3deg)) translateY(-6px) scale(1.02)}
-.mc-2:hover{z-index:10;transform:rotateY(calc(var(--mx)*3deg)) rotateX(calc(var(--my)*-2.5deg)) translateY(-6px) scale(1.02)}
-.mc-3:hover{z-index:10;transform:rotateY(calc(var(--mx)*2.5deg)) rotateX(calc(var(--my)*-2deg)) translateY(-6px) scale(1.02)}
-
-/* Card shared inner elements */
-.mc-bar{display:flex;align-items:center;padding:8px 12px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08)}
-.mc-dots{display:flex;gap:4px}
-.mc-dots span{width:6px;height:6px;border-radius:50%}
-.mc-dots span:nth-child(1){background:#FF5F57}.mc-dots span:nth-child(2){background:#FEBC2E}.mc-dots span:nth-child(3){background:#28C840}
-.mc-title{margin-left:auto;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.35)}
-.mc-body{padding:10px 14px 14px}
-
-/* Scenario badge on LBO card — inline in the title bar */
-.mc-scenario{position:relative;margin-left:8px;z-index:6}
-.mc-scenario-inner{padding:2px 7px;font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(37,99,235,.25);background:rgba(37,99,235,.1);color:rgba(37,99,235,.7);border-radius:3px;transition:all .5s ease}
-.mc-1:hover .mc-scenario-inner{border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.06);color:rgba(239,68,68,.5)}
-.mc-scn-base,.mc-scn-down{transition:opacity .4s,transform .4s}
-.mc-scn-down{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:2px 7px;opacity:0;transform:translateY(4px)}
-.mc-scn-base{opacity:1;transform:translateY(0)}
-.mc-1:hover .mc-scn-base{opacity:0;transform:translateY(-4px)}
-.mc-1:hover .mc-scn-down{opacity:1;transform:translateY(0)}
-
-/* LBO Returns data grid */
-.mc-grid{width:100%}
-.mc-grid-row{display:grid;grid-template-columns:60px 1fr 1fr 1fr;gap:0}
-.mc-grid-row.mc-grid-header .mc-grid-cell{font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:3px 6px;border-bottom:1px solid rgba(255,255,255,.08)}
-.mc-grid-cell{font-size:8px;font-family:'SF Mono','Consolas','Courier New',monospace;color:rgba(255,255,255,.45);text-align:right;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px;white-space:nowrap}
-.mc-grid-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.5)}
-.mc-grid-cell.mc-hl{color:rgba(37,99,235,.8);font-weight:700}
-
-/* DCF Sensitivity table */
-.mc-sens{width:100%}
-.mc-sens-row{display:grid;grid-template-columns:48px repeat(4,1fr);gap:0}
-.mc-sens-row.mc-sens-header .mc-sens-cell{font-size:6px;font-family:var(--sans);font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
-.mc-sens-cell{font-size:7.5px;font-family:'SF Mono','Consolas','Courier New',monospace;color:rgba(255,255,255,.45);text-align:center;padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px}
-.mc-sens-cell:first-child{text-align:left;font-family:var(--sans);font-weight:500;color:rgba(255,255,255,.5);font-size:7px}
-.mc-sens-cell.mc-sens-hl{color:rgba(37,99,235,.8);font-weight:700;background:rgba(37,99,235,.08)}
-
-/* Waterfall chart — true bridge layout */
-.mc-waterfall{display:flex;gap:4px;height:88px;padding-top:8px;position:relative}
-.mc-wf-bar-wrap{flex:1;position:relative;display:flex;flex-direction:column;align-items:center}
-.mc-wf-bar{width:100%;border-radius:2px 2px 0 0;position:absolute;left:0;right:0}
-.mc-wf-bar.mc-wf-pos{background:rgba(37,99,235,.5)}
-.mc-wf-bar.mc-wf-neg{background:rgba(239,68,68,.5);border-radius:0 0 2px 2px}
-.mc-wf-bar.mc-wf-total{background:rgba(34,197,94,.45)}
-.mc-wf-val{font-size:6px;font-family:'SF Mono',monospace;color:rgba(255,255,255,.4);white-space:nowrap;letter-spacing:.3px;position:absolute;left:50%;transform:translateX(-50%)}
-.mc-wf-label{font-size:5.5px;font-family:var(--sans);font-weight:600;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.2;position:absolute;bottom:0;left:0;right:0}
-
-/* Glow underneath cards */
-.mc-glow{position:absolute;bottom:-40px;left:50%;width:260px;height:100px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(37,99,235,.08),transparent 70%);pointer-events:none;filter:blur(40px)}
-
-
+.model-stack{position:relative;width:360px;height:380px;perspective:800px}
+.model-card{position:absolute;width:270px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:14px 16px;backdrop-filter:blur(6px);transition:transform .5s cubic-bezier(.23,1,.32,1),box-shadow .5s ease;overflow:hidden}
+.model-card::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.03),transparent);transition:left 0s;pointer-events:none}
+.model-stack:hover .model-card::before{left:130%;transition:left .9s ease}
+.mc-1{top:0;left:10px;z-index:3;transform:rotateY(calc(var(--mx)*6deg)) rotateX(calc(var(--my)*-4deg)) translateZ(30px)}
+.mc-2{top:115px;left:65px;z-index:2;transform:rotateY(calc(var(--mx)*5deg)) rotateX(calc(var(--my)*-3deg)) translateZ(15px)}
+.mc-3{top:230px;left:25px;z-index:1;transform:rotateY(calc(var(--mx)*4deg)) rotateX(calc(var(--my)*-2deg)) translateZ(0)}
+.model-stack:hover .mc-1{transform:rotateY(calc(var(--mx)*6deg)) rotateX(calc(var(--my)*-4deg)) translateZ(50px) translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.2)}
+.model-stack:hover .mc-2{transform:rotateY(calc(var(--mx)*5deg)) rotateX(calc(var(--my)*-3deg)) translateZ(25px);box-shadow:0 16px 40px rgba(0,0,0,.15)}
+.model-stack:hover .mc-3{transform:rotateY(calc(var(--mx)*4deg)) rotateX(calc(var(--my)*-2deg)) translateZ(8px) translateY(6px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
 @media(prefers-reduced-motion:reduce){
-  .model-card{transform:none!important;transition:none!important}
-  .mc-shimmer{display:none!important}
-  .hero-ring,.hero-glow,.hero-glow-2{animation:none!important}
-  .model-card:hover{transform:none!important;box-shadow:0 30px 80px rgba(0,0,0,.35)!important}
+  .model-card,.mc-1,.mc-2,.mc-3{transform:none!important;transition:none!important}
+  .model-card::before{display:none!important}
+  .hero-ring,.hero-glow{animation:none!important}
+  .model-stack:hover .mc-1,.model-stack:hover .mc-2,.model-stack:hover .mc-3{transform:none!important;box-shadow:none!important}
 }
-
+.mc-bar{display:flex;gap:4px;margin-bottom:8px;align-items:center}
+.mc-dot{width:5px;height:5px;border-radius:50%}
+.mc-dot:nth-child(1){background:#FF605C}.mc-dot:nth-child(2){background:#FFBD44}.mc-dot:nth-child(3){background:#00CA4E}
+.mc-title{margin-left:auto;font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.2);font-weight:600}
+.mc-grid{display:grid;gap:0;margin-bottom:6px}
+.mc-grid.g5{grid-template-columns:46px repeat(3,1fr)}
+.mc-grid.g4{grid-template-columns:42px repeat(3,1fr)}
+.mc-cell{padding:3px 4px;font-size:7.5px;font-family:var(--sans);background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.025);color:rgba(255,255,255,.15);text-align:right;letter-spacing:.3px;font-weight:400}
+.mc-cell.h{text-align:left;color:rgba(255,255,255,.08);font-weight:600;text-transform:uppercase;letter-spacing:.8px;font-size:6.5px;background:rgba(255,255,255,.015)}
+.mc-cell.l{text-align:left;color:rgba(255,255,255,.12);font-weight:500;font-size:7px}
+.mc-cell.hi{background:rgba(37,99,235,.06);color:rgba(37,99,235,.4)}
+.mc-mini-chart{display:flex;align-items:flex-end;gap:2px;height:22px;margin-top:4px}
+.mc-mini-chart span{flex:1;border-radius:1px 1px 0 0}
+.mc-mini-chart span:nth-child(odd){background:rgba(37,99,235,.1)}.mc-mini-chart span:nth-child(even){background:rgba(37,99,235,.18)}
+.mc-glow{position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.1),transparent 70%);pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(40px)}
 .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .7s ease forwards 1.2s}
 .hero-scroll span{font-size:9px;color:rgba(255,255,255,.15);letter-spacing:2px;text-transform:uppercase}
 .scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.12),transparent);animation:scrollBob 2s ease-in-out infinite}
 @keyframes scrollBob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(6px);opacity:.15}}
 
 /* === SHARED === */
-.sec{padding:110px 48px;max-width:1100px;margin:0 auto}
-.sw{padding:110px 48px}
+.sec{padding:100px 48px;max-width:1100px;margin:0 auto}
+.sw{padding:100px 48px}
 .sl{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:14px}
 .st{font-family:var(--serif);font-size:36px;font-weight:400;color:var(--navy);line-height:1.25;margin-bottom:18px}
 .ss{font-size:14px;color:var(--txt2);max-width:520px;line-height:1.8}
@@ -209,15 +169,16 @@ nav.s .nm span{background:var(--navy)}
 .trust-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--txt2)}
 .trust-icon{width:18px;height:18px;color:var(--navy);flex-shrink:0;opacity:.4}
 
-/* === EXPERIENCE BAR — logos === */
-.exp-bar{padding:56px 48px;background:var(--off);border-bottom:1px solid var(--bdr2);text-align:center}
-.exp-label{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:28px}
-.exp-track{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
-.exp-logo{height:20px;width:auto;opacity:.25;transition:opacity .3s}
-.exp-logo:hover{opacity:.5}
+/* === EXPERIENCE BAR — text chips === */
+.exp-bar{padding:52px 48px;background:var(--off);border-bottom:1px solid var(--bdr2);text-align:center}
+.exp-label{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:24px}
+.exp-track{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.exp-chip{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--txt3);padding:7px 16px;border:1px solid var(--bdr);background:var(--white);transition:.3s;white-space:nowrap}
+.exp-chip:hover{color:var(--navy);border-color:var(--navy)}
+.exp-note{font-size:10px;color:var(--txt3);margin-top:18px;font-style:italic}
 
 /* === SERVICES === */
-.sv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);margin-top:52px}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);margin-top:52px}
 .sv{background:var(--white);padding:34px 28px;transition:.3s}.sv:hover{background:var(--off)}
 .sv-n{font-family:var(--serif);font-size:12px;color:var(--txt3);margin-bottom:12px;font-weight:600}
 .sv h3{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--navy);margin-bottom:8px;line-height:1.3}
@@ -249,44 +210,23 @@ nav.s .nm span{background:var(--navy)}
 /* === TRANSACTIONS === */
 .tx-bg{background:var(--off)}
 .tx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
-.tx{background:var(--white);border:1px solid var(--bdr);padding:28px 24px 22px;transition:.3s;display:flex;flex-direction:column}.tx:hover{box-shadow:0 4px 16px rgba(11,24,41,.05);border-color:var(--navy)}
-.tx-logo-area{height:36px;margin-bottom:16px;display:flex;align-items:center}
-.tx-logo-area svg{max-height:28px;width:auto;opacity:.45;transition:opacity .3s}
-.tx:hover .tx-logo-area svg{opacity:.85}
+.tx{background:var(--white);border:1px solid var(--bdr);padding:24px 22px 20px;transition:.3s}.tx:hover{box-shadow:0 4px 16px rgba(11,24,41,.05);border-color:var(--navy)}
 .tx-sec{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px}
-.tx-nm{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:6px;line-height:1.3}
-.tx-d{font-size:11.5px;color:var(--txt2);line-height:1.6;margin-bottom:10px;flex:1}
-.tx-tags{display:flex;gap:5px;flex-wrap:wrap}
+.tx-nm{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:4px;line-height:1.3}
+.tx-d{font-size:11.5px;color:var(--txt2);line-height:1.55;margin-bottom:4px}
+.tx-scope{font-size:10.5px;color:var(--navy);font-weight:500;margin-bottom:10px}
+.tx-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
 .tx-t{font-size:9.5px;color:var(--txt3);padding:3px 7px;border:1px solid var(--bdr);letter-spacing:.5px}
-
-/* === MODEL SHOWCASE === */
-.ms-bg{background:var(--white)}
-.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
-.ms{background:var(--white);border:1px solid var(--bdr);padding:28px 24px 22px;transition:.3s;display:flex;flex-direction:column}.ms:hover{box-shadow:0 4px 16px rgba(11,24,41,.05);border-color:var(--navy)}
-.ms-icon{width:36px;height:36px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;background:var(--blue-dim);border-radius:8px;color:var(--blue);flex-shrink:0}
-.ms-icon svg{width:20px;height:20px}
-.ms-type{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px}
-.ms-nm{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:6px;line-height:1.3}
-.ms-d{font-size:11.5px;color:var(--txt2);line-height:1.6;margin-bottom:10px;flex:1}
-.ms-tags{display:flex;gap:5px;flex-wrap:wrap}
-.ms-t{font-size:9.5px;color:var(--txt3);padding:3px 7px;border:1px solid var(--bdr);letter-spacing:.5px}
+.tx-logos-row{display:flex;align-items:center;gap:8px;padding-top:10px;border-top:1px solid var(--bdr2);flex-wrap:wrap}
+.tx-chip{font-size:8px;color:var(--txt3);padding:2px 8px;border:1px solid var(--bdr);letter-spacing:1px;font-weight:600;text-transform:uppercase;font-family:var(--sans);transition:.3s}
+.tx-chip:hover{color:var(--navy);border-color:var(--navy)}
 
 /* === ABOUT === */
-.about-intro{margin-bottom:48px}
-.about-intro p{color:var(--txt2);font-size:14px;line-height:1.85;margin-top:12px;max-width:720px}
-.about-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:0}
-.about-card{background:var(--white);border:1px solid var(--bdr2);padding:28px 22px;transition:.3s}
-.about-card:hover{border-color:var(--navy);box-shadow:0 4px 16px rgba(11,24,41,.04)}
-.about-card-icon{width:28px;height:28px;color:var(--navy);opacity:.35;margin-bottom:14px}
-.about-card h4{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:8px}
-.about-card p{font-size:13px;color:var(--navy);line-height:1.5}
-
-/* About stats tiles */
-.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
-.about-stat{background:var(--off);border:1px solid var(--bdr2);padding:24px 18px;text-align:center;transition:.3s}
-.about-stat:hover{border-color:var(--navy);box-shadow:0 2px 12px rgba(11,24,41,.04)}
-.about-stat-val{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-1px}
-.about-stat-label{font-size:10px;color:var(--txt3);letter-spacing:1px;text-transform:uppercase;margin-top:6px;line-height:1.3}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+.about-grid p{color:var(--txt2);font-size:14px;line-height:1.85;margin-bottom:12px}
+.cr{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--bdr2);align-items:baseline}.cr:last-child{border-bottom:none}
+.cr-l{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt3);min-width:80px}
+.cr-v{font-size:13px;color:var(--navy);line-height:1.5}.cr-v span{color:var(--txt2)}
 
 /* === PRICING === */
 .pw{max-width:520px;margin:56px auto 0}
@@ -318,13 +258,13 @@ nav.s .nm span{background:var(--navy)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 
 /* === LEGAL === */
-.legal-sec{padding:48px 48px;background:var(--off);border-top:1px solid var(--bdr2)}
+.legal-sec{padding:52px 48px;background:var(--off);border-top:1px solid var(--bdr2)}
 .legal-inner{max-width:680px;margin:0 auto}
-.legal-inner h4{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt3);margin-bottom:10px}
-.legal-inner p{font-size:11px;color:var(--txt3);line-height:1.8}
+.legal-inner h4{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt3);margin-bottom:14px}
+.legal-inner p{font-size:11px;color:var(--txt3);line-height:1.8;margin-bottom:8px}
 
 /* === CONTACT === */
-.ct{background:var(--navy);color:#fff;padding:110px 48px;text-align:center;position:relative}
+.ct{background:var(--navy);color:#fff;padding:100px 48px;text-align:center;position:relative}
 .ct::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(37,99,235,.05) 0%,transparent 50%);pointer-events:none}
 .ct .sl{color:rgba(255,255,255,.18)}.ct .st{color:#fff}.ct .ss{color:rgba(255,255,255,.28);margin:0 auto 28px}
 .ct-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
@@ -334,7 +274,9 @@ nav.s .nm span{background:var(--navy)}
 
 footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.03);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:rgba(255,255,255,.1)}
 .footer-brand{display:flex;align-items:center;gap:10px}
-.footer-brand-name{font-family:var(--serif);font-size:12px;color:rgba(255,255,255,.15)}
+.footer-brand .brand-mark{width:22px;height:22px}
+.footer-brand .brand-mark .mark-bg{stroke:rgba(255,255,255,.1)}
+.footer-brand .brand-mark .mark-letter{fill:rgba(255,255,255,.15);font-size:11px}
 .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 20px;background:var(--white);border-top:1px solid var(--bdr);box-shadow:0 -4px 16px rgba(0,0,0,.06)}
 .sticky-cta a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:var(--navy);color:#fff;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--sans)}
 
@@ -343,247 +285,106 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.rv.v{opacity:1;transform:translateY(0)}
 
 @media(max-width:960px){
-  nav{padding:0 20px;height:56px}.nl,.nc{display:none}.nm{display:block}
+  nav{padding:0 20px;height:56px}.nl,.nc{display:none}.nm{display:block}.lt{right:52px}
+  .brand-text{display:none}
   .hero{padding:100px 20px 60px;min-height:auto}
   .hero-grid{grid-template-columns:1fr;gap:28px;text-align:center}
   .hero-left{text-align:center}.hero-counters{justify-content:center;gap:20px;flex-wrap:wrap}.hc{text-align:center}
   .hero-ctas{justify-content:center;flex-wrap:wrap}
-  .hero-right{max-width:340px;margin:0 auto}
-  .model-stack{width:300px;height:360px}
-  .model-card{width:280px}
+  .hero-right{max-width:280px;margin:0 auto}
+  .model-stack{width:240px;height:300px}.model-card{width:200px;padding:10px 12px}
+  .mc-cell{font-size:6.5px;padding:2px 3px}.mc-cell.h{font-size:5.5px}.mc-cell.l{font-size:6px}
+  .mc-title{font-size:7px}.mc-mini-chart{height:16px}
   .sec,.sw{padding:64px 20px}
-  .sv-grid{grid-template-columns:repeat(2,1fr)}
-  .hiw-grid,.tx-grid,.ms-grid{grid-template-columns:1fr}
-  .llm{grid-template-columns:1fr}
-  .about-cards{grid-template-columns:repeat(2,1fr);gap:10px}
-  .about-stats{grid-template-columns:repeat(2,1fr);gap:8px}
-  .about-stat{padding:18px 14px}.about-stat-val{font-size:22px}
-  .exp-track{gap:20px}
+  .sv-grid,.hiw-grid,.tx-grid{grid-template-columns:1fr}
+  .llm{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr;gap:32px}
+  .exp-track{gap:8px}.exp-chip{font-size:9px;padding:5px 12px}
   .trust-bar{flex-direction:column;gap:12px;align-items:flex-start;padding:24px 20px}
   .hiw-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.04);padding:28px 0}
   footer{flex-direction:column;gap:8px;padding:20px;text-align:center}
   .hero-scroll{display:none}.sticky-cta{display:block}
   .ct-ctas{flex-direction:column;align-items:center}
-  .hero-ring{left:50%}.hero-glow{left:50%}.hero-glow-2{display:none}
-  .legal-sec{padding:36px 20px}
+  .hero-ring{left:50%}.hero-glow{left:50%}
+  .legal-sec{padding:40px 20px}
   .exp-bar{padding:36px 20px}
   .faq-item summary{font-size:13px;padding:16px 0}
   .pw{margin-top:40px}
-  .brand-name{font-size:15px}
-  .ct{padding:80px 20px}
-}
-@media(max-width:480px){
-  .hero-counters{gap:16px}
-  .hc-num{font-size:28px}
-  .sv-grid{grid-template-columns:1fr}
-  .about-cards{grid-template-columns:1fr}
-  .about-stats{grid-template-columns:1fr 1fr}
-  .about-stat{padding:16px 12px}.about-stat-val{font-size:20px}
-  .tx-grid{gap:10px}
-  .exp-track{gap:16px}
-  .model-stack{width:260px;height:340px}
-  .model-card{width:240px}
 }
 </style>
 </head>
 <body>
 
+<div class="lt" id="lt">
+  <button class="ltb a" data-lang="en" onclick="L('en')">EN</button>
+  <button class="ltb" data-lang="de" onclick="L('de')">DE</button>
+</div>
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <a href="#services" onclick="closeDrawer()"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
   <a href="#transactions" onclick="closeDrawer()"><span class="lang-en">Transactions</span><span class="lang-de">Transaktionen</span></a>
-  <a href="#showcase" onclick="closeDrawer()"><span class="lang-en">Showcase</span><span class="lang-de">Galerie</span></a>
-  <a href="#about" onclick="closeDrawer()"><span class="lang-en">About</span><span class="lang-de">Über uns</span></a>
+  <a href="#about" onclick="closeDrawer()"><span class="lang-en">About</span><span class="lang-de">Über Uns</span></a>
   <a href="#engagement" onclick="closeDrawer()"><span class="lang-en">Engagement</span><span class="lang-de">Konditionen</span></a>
-  <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="drawer-cta"><span class="lang-en">Book a Scoping Call</span><span class="lang-de">Scoping-Call buchen</span></a>
+  <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="drawer-cta"><span class="lang-en">Book a Scoping Call</span><span class="lang-de">Scoping-Call Buchen</span></a>
 </div>
 <nav id="nav">
   <a href="#" class="brand">
-    <div class="brand-wordmark">
-      <span class="brand-name">Dogan</span>
-      <span class="brand-sub">Advisory</span>
-    </div>
+    <svg class="brand-mark" viewBox="0 0 32 32"><rect class="mark-bg" x="1" y="1" width="30" height="30" rx="4"/><text class="mark-letter" x="50%" y="54%" text-anchor="middle" dominant-baseline="central">D</text></svg>
+    <div class="brand-text"><span class="brand-name">Dogan &amp; Co</span><span class="brand-sub">Advisory</span></div>
   </a>
   <ul class="nl">
     <li><a href="#services"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a></li>
     <li><a href="#transactions"><span class="lang-en">Transactions</span><span class="lang-de">Transaktionen</span></a></li>
-    <li><a href="#showcase"><span class="lang-en">Showcase</span><span class="lang-de">Galerie</span></a></li>
-    <li><a href="#about"><span class="lang-en">About</span><span class="lang-de">Über uns</span></a></li>
+    <li><a href="#about"><span class="lang-en">About</span><span class="lang-de">Über Uns</span></a></li>
     <li><a href="#engagement"><span class="lang-en">Engagement</span><span class="lang-de">Konditionen</span></a></li>
   </ul>
-  <div class="nav-right">
-    <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="nc"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch buchen</span></a>
-    <div class="lt" id="lt">
-      <button class="ltb a" data-lang="en" onclick="L('en')">EN</button>
-      <button class="ltb" data-lang="de" onclick="L('de')">DE</button>
-    </div>
-    <button class="nm" id="menuBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
-  </div>
+  <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="nc"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch Buchen</span></a>
+  <button class="nm" id="menuBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="hero" id="hero-section">
-  <div class="hero-noise"></div>
-  <div class="hero-grid-bg"><svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/></pattern></defs><rect width="800" height="800" fill="url(#grid)"/></svg></div>
   <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
   <div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-ring"></div>
   <div class="hero-grid">
     <div class="hero-left">
       <div class="hero-tag">
-        <span class="lang-en">Ex-Jefferies · $3bn+ Modelled · 21+ Deliveries</span>
-        <span class="lang-de">Ex-Jefferies · $3 Mrd.+ modelliert · 21+ Modelle</span>
+        <span class="lang-en">Ex-Jefferies · $3bn+ Modelled · 21+ Models Delivered</span>
+        <span class="lang-de">Ex-Jefferies · $3 Mrd.+ modelliert · 21+ Modelle geliefert</span>
       </div>
       <h1>
-        <span class="lang-en">The Financial Model<br>Your Deal <strong>Deserves</strong>.</span>
-        <span class="lang-de">Das Finanzmodell,<br>das Ihr Deal <strong>verdient</strong>.</span>
+        <span class="lang-en">Institutional-Grade<br>Financial <strong>Models</strong>.<br>Built Fast.</span>
+        <span class="lang-de">Institutionelle<br><strong>Finanzmodelle</strong>.<br>Schnell geliefert.</span>
       </h1>
       <p class="hero-p">
-        <span class="lang-en">Operating models, valuations, and LBO analyses — built by an ex-Jefferies practitioner who has delivered them on $3bn+ of live transactions for sponsors, corporates, and AI platforms.</span>
-        <span class="lang-de">Operating Models, Bewertungen und LBO-Analysen — erstellt von einem Ex-Jefferies-Praktiker mit über $3 Mrd. Transaktionserfahrung für Sponsoren, Unternehmen und KI-Plattformen.</span>
+        <span class="lang-en">Operating models, valuations, and LBO analyses<br>for companies, sponsors, and AI platforms — by a practitioner<br>who has built them on $3bn+ of live transactions.</span>
+        <span class="lang-de">Operating Models, Bewertungen und LBO-Analysen<br>für Unternehmen, Sponsoren und KI-Plattformen — von einem<br>Praktiker mit über $3 Mrd. an realer Transaktionserfahrung.</span>
       </p>
       <div class="hero-ctas">
-        <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bw"><span class="lang-en">Book a Scoping Call</span><span class="lang-de">Scoping-Call buchen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="#services" class="bg"><span class="lang-en">View Services</span><span class="lang-de">Leistungen ansehen</span></a>
+        <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bw"><span class="lang-en">Book a 15-Min Scoping Call</span><span class="lang-de">15-Min-Scoping-Call Buchen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#services" class="bg"><span class="lang-en">Explore Services</span><span class="lang-de">Leistungen Entdecken</span></a>
       </div>
       <div class="hero-counters">
-        <div class="hc"><div class="hc-num">$3bn<span class="suf">+</span></div><div class="hc-label"><span class="lang-en">Deal Value Modelled</span><span class="lang-de">Transaktionsvolumen</span></div></div>
+        <div class="hc"><div class="hc-num">$3bn<span class="suf">+</span></div><div class="hc-label"><span class="lang-en">Aggregate Deal Value</span><span class="lang-de">Transaktionsvolumen</span></div></div>
         <div class="hc"><div class="hc-num"><span data-target="21" class="counter">0</span><span class="suf">+</span></div><div class="hc-label"><span class="lang-en">Models Delivered</span><span class="lang-de">Modelle geliefert</span></div></div>
         <div class="hc"><div class="hc-num"><span data-target="6" class="counter">0</span><span class="suf">+</span></div><div class="hc-label"><span class="lang-en">Sectors</span><span class="lang-de">Sektoren</span></div></div>
       </div>
     </div>
     <div class="hero-right">
       <div class="model-stack">
-
-        <!-- Card 1: LBO Returns (top, z-index 3) -->
-        <div class="model-card mc-1">
-          <div class="mc-shimmer"></div>
-          <div class="mc-bar">
-            <div class="mc-dots"><span></span><span></span><span></span></div>
-            <div class="mc-title">LBO Returns</div>
-            <div class="mc-scenario"><div class="mc-scenario-inner"><span class="mc-scn-base">Base Case</span><span class="mc-scn-down">Downside</span></div></div>
-          </div>
-          <div class="mc-body">
-            <div class="mc-grid">
-              <div class="mc-grid-row mc-grid-header">
-                <div class="mc-grid-cell"></div>
-                <div class="mc-grid-cell">Base</div>
-                <div class="mc-grid-cell">Upside</div>
-                <div class="mc-grid-cell">Down</div>
-              </div>
-              <div class="mc-grid-row">
-                <div class="mc-grid-cell">MoM</div>
-                <div class="mc-grid-cell mc-hl">2.4x</div>
-                <div class="mc-grid-cell">3.1x</div>
-                <div class="mc-grid-cell">1.6x</div>
-              </div>
-              <div class="mc-grid-row">
-                <div class="mc-grid-cell">IRR</div>
-                <div class="mc-grid-cell mc-hl">22.1%</div>
-                <div class="mc-grid-cell">28.4%</div>
-                <div class="mc-grid-cell">12.3%</div>
-              </div>
-              <div class="mc-grid-row">
-                <div class="mc-grid-cell">Equity</div>
-                <div class="mc-grid-cell mc-hl">$412m</div>
-                <div class="mc-grid-cell">$531m</div>
-                <div class="mc-grid-cell">$274m</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: DCF Valuation (middle, z-index 2) -->
-        <div class="model-card mc-2">
-          <div class="mc-shimmer"></div>
-          <div class="mc-bar">
-            <div class="mc-dots"><span></span><span></span><span></span></div>
-            <div class="mc-title">DCF Valuation</div>
-          </div>
-          <div class="mc-body">
-            <div class="mc-sens">
-              <div class="mc-sens-row mc-sens-header">
-                <div class="mc-sens-cell">WACC \ g</div>
-                <div class="mc-sens-cell">1.5%</div>
-                <div class="mc-sens-cell">2.0%</div>
-                <div class="mc-sens-cell">2.5%</div>
-                <div class="mc-sens-cell">3.0%</div>
-              </div>
-              <div class="mc-sens-row">
-                <div class="mc-sens-cell">8.0%</div>
-                <div class="mc-sens-cell">$48.2</div>
-                <div class="mc-sens-cell">$52.1</div>
-                <div class="mc-sens-cell">$56.8</div>
-                <div class="mc-sens-cell">$62.4</div>
-              </div>
-              <div class="mc-sens-row">
-                <div class="mc-sens-cell">9.0%</div>
-                <div class="mc-sens-cell">$42.6</div>
-                <div class="mc-sens-cell mc-sens-hl">$45.8</div>
-                <div class="mc-sens-cell">$49.4</div>
-                <div class="mc-sens-cell">$53.7</div>
-              </div>
-              <div class="mc-sens-row">
-                <div class="mc-sens-cell">10.0%</div>
-                <div class="mc-sens-cell">$38.1</div>
-                <div class="mc-sens-cell">$40.7</div>
-                <div class="mc-sens-cell">$43.6</div>
-                <div class="mc-sens-cell">$46.9</div>
-              </div>
-              <div class="mc-sens-row">
-                <div class="mc-sens-cell">11.0%</div>
-                <div class="mc-sens-cell">$34.3</div>
-                <div class="mc-sens-cell">$36.5</div>
-                <div class="mc-sens-cell">$38.9</div>
-                <div class="mc-sens-cell">$41.6</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Returns Waterfall (bottom, z-index 1) -->
-        <div class="model-card mc-3">
-          <div class="mc-shimmer"></div>
-          <div class="mc-bar">
-            <div class="mc-dots"><span></span><span></span><span></span></div>
-            <div class="mc-title">Returns Waterfall</div>
-          </div>
-          <div class="mc-body">
-            <div class="mc-waterfall">
-              <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val" style="bottom:42px">1.0x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="bottom:14px;height:26px"></div>
-                <div class="mc-wf-label">Entry</div>
-              </div>
-              <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val" style="bottom:58px">+0.6x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="bottom:40px;height:16px"></div>
-                <div class="mc-wf-label">Rev<br>Growth</div>
-              </div>
-              <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val" style="bottom:66px">+0.3x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="bottom:56px;height:8px"></div>
-                <div class="mc-wf-label">Margin</div>
-              </div>
-              <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val" style="bottom:76px">+0.4x</div>
-                <div class="mc-wf-bar mc-wf-pos" style="bottom:64px;height:10px"></div>
-                <div class="mc-wf-label">De-<br>lever</div>
-              </div>
-              <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val" style="bottom:76px">-0.2x</div>
-                <div class="mc-wf-bar mc-wf-neg" style="bottom:69px;height:5px"></div>
-                <div class="mc-wf-label">Multi-<br>ple</div>
-              </div>
-              <div class="mc-wf-bar-wrap">
-                <div class="mc-wf-val" style="bottom:71px">2.1x</div>
-                <div class="mc-wf-bar mc-wf-total" style="bottom:14px;height:55px"></div>
-                <div class="mc-wf-label">Exit</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="mc-glow"></div>
+        <div class="model-card mc-1">
+          <div class="mc-bar"><span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-title">Operating Model</span></div>
+          <div class="mc-grid g5"><div class="mc-cell h"></div><div class="mc-cell h">FY25</div><div class="mc-cell h">FY26E</div><div class="mc-cell h">FY27E</div><div class="mc-cell l">Revenue</div><div class="mc-cell">168.7</div><div class="mc-cell hi">201.4</div><div class="mc-cell hi">238.9</div><div class="mc-cell l">EBITDA</div><div class="mc-cell">39.5</div><div class="mc-cell hi">48.1</div><div class="mc-cell hi">57.6</div><div class="mc-cell l">Margin</div><div class="mc-cell">23.4%</div><div class="mc-cell hi">23.9%</div><div class="mc-cell hi">24.1%</div></div>
+          <div class="mc-mini-chart"><span style="height:40%"></span><span style="height:55%"></span><span style="height:68%"></span><span style="height:82%"></span><span style="height:65%"></span><span style="height:95%"></span></div>
+        </div>
+        <div class="model-card mc-2">
+          <div class="mc-bar"><span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-title">DCF Valuation</span></div>
+          <div class="mc-grid g4"><div class="mc-cell h">WACC\G</div><div class="mc-cell h">1.5%</div><div class="mc-cell h">2.0%</div><div class="mc-cell h">2.5%</div><div class="mc-cell l">8.0%</div><div class="mc-cell">412</div><div class="mc-cell hi">438</div><div class="mc-cell">468</div><div class="mc-cell l">9.0%</div><div class="mc-cell">368</div><div class="mc-cell hi">388</div><div class="mc-cell">412</div><div class="mc-cell l">10.0%</div><div class="mc-cell">332</div><div class="mc-cell">348</div><div class="mc-cell">368</div></div>
+        </div>
+        <div class="model-card mc-3">
+          <div class="mc-bar"><span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-title">LBO Returns</span></div>
+          <div class="mc-grid g4"><div class="mc-cell h"></div><div class="mc-cell h">Base</div><div class="mc-cell h">Upside</div><div class="mc-cell h">Down</div><div class="mc-cell l">MoM</div><div class="mc-cell hi">2.4x</div><div class="mc-cell">3.1x</div><div class="mc-cell">1.8x</div><div class="mc-cell l">IRR</div><div class="mc-cell hi">22%</div><div class="mc-cell">28%</div><div class="mc-cell">14%</div></div>
+          <div class="mc-mini-chart"><span style="height:30%"></span><span style="height:50%"></span><span style="height:75%"></span><span style="height:100%"></span><span style="height:65%"></span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -596,47 +397,35 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span class="lang-en">Bilingual Delivery: English &amp; German</span><span class="lang-de">Zweisprachig: Englisch &amp; Deutsch</span></div>
 </div>
 
-<!-- Experience bar — inline SVG wordmark logos -->
 <div class="exp-bar">
-  <div class="exp-label"><span class="lang-en">Modelling Experience Alongside</span><span class="lang-de">Modelling-Erfahrung in</span></div>
+  <div class="exp-label"><span class="lang-en">Modelling Experience Alongside</span><span class="lang-de">Modelling-Erfahrung mit</span></div>
   <div class="exp-track">
-    <svg class="exp-logo" viewBox="0 0 120 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#3A4A60" letter-spacing=".5">Jefferies</text></svg>
-    <svg class="exp-logo" viewBox="0 0 140 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#3A4A60">J.P. Morgan</text></svg>
-    <svg class="exp-logo" viewBox="0 0 170 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#3A4A60">Goldman Sachs</text></svg>
-    <svg class="exp-logo" viewBox="0 0 160 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">NORDIC CAPITAL</text></svg>
-    <svg class="exp-logo" viewBox="0 0 175 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">PLATINUM EQUITY</text></svg>
-    <svg class="exp-logo" viewBox="0 0 46 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#3A4A60" letter-spacing="1.5">GBL</text></svg>
-    <svg class="exp-logo" viewBox="0 0 140 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" fill="#3A4A60" letter-spacing="1">FSN CAPITAL</text></svg>
-    <svg class="exp-logo" viewBox="0 0 68 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing="1.5">ALTOR</text></svg>
-    <svg class="exp-logo" viewBox="0 0 80 22" xmlns="http://www.w3.org/2000/svg"><text x="0" y="16" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700" fill="#3A4A60" letter-spacing="1.5">TRITON</text></svg>
+    <span class="exp-chip">Jefferies</span><span class="exp-chip">J.P. Morgan</span><span class="exp-chip">Goldman Sachs</span><span class="exp-chip">Nordic Capital</span><span class="exp-chip">Platinum Equity</span><span class="exp-chip">GBL</span><span class="exp-chip">FSN Capital</span><span class="exp-chip">Altor</span><span class="exp-chip">Triton</span>
   </div>
+  <div class="exp-note"><span class="lang-en">Trademarks belong to their respective owners.</span><span class="lang-de">Marken gehören ihren jeweiligen Eigentümern.</span></div>
 </div>
 
 <section class="sec" id="services">
-  <div class="rv"><div class="sl"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></div><div class="st"><span class="lang-en">Financial Modelling, End to End</span><span class="lang-de">Financial Modelling, von A bis Z</span></div><div class="ss"><span class="lang-en">Operating models, valuations, and audit-ready deliverables for decisions that matter.</span><span class="lang-de">Operating Models, Bewertungen und prüfungsfähige Deliverables für Entscheidungen, die zählen.</span></div></div>
+  <div class="rv"><div class="sl"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></div><div class="st"><span class="lang-en">Financial Modelling, End-to-End</span><span class="lang-de">Financial Modelling, von A bis Z</span></div><div class="ss"><span class="lang-en">Operating models, valuations, and audit-ready deliverables<br>for decisions that matter.</span><span class="lang-de">Operating Models, Bewertungen und prüfungsfähiger Lieferumfang<br>für Entscheidungen, die zählen.</span></div></div>
   <div class="sv-grid rv">
-    <div class="sv"><div class="sv-n">01</div><h3><span class="lang-en">Operating Models</span><span class="lang-de">Operating Models</span></h3><p class="lang-en">Integrated three-statement models with revenue build-ups, cost structures, working capital, and capex schedules. Fully linked with a clear audit trail.</p><p class="lang-de">Integrierte Drei-Statement-Modelle mit Umsatzherleitung, Kostenstrukturen, Working Capital und Investitionsplänen. Vollständig verknüpft mit nachvollziehbarer Prüfspur.</p><div class="sv-for"><span class="lang-en">Best For: Fundraises, Board Planning, Sponsor Due Diligence</span><span class="lang-de">Ideal für: Kapitalaufnahmen, Vorstandsplanung, Sponsor-Due-Diligence</span></div></div>
-    <div class="sv"><div class="sv-n">02</div><h3><span class="lang-en">Valuation Analysis</span><span class="lang-de">Bewertungsanalysen</span></h3><p class="lang-en">DCF, comparable companies, precedent transactions, and sum-of-the-parts. Includes sensitivity tables and presentation-ready schedules.</p><p class="lang-de">DCF, Vergleichsunternehmen, Vergleichstransaktionen und Sum-of-the-Parts. Inklusive Sensitivitätstabellen und präsentationsfertiger Nebenrechnungen.</p><div class="sv-for"><span class="lang-en">Best For: M&amp;A Pricing, Investment Memos, Fairness Support</span><span class="lang-de">Ideal für: M&amp;A-Preisfindung, Investment-Memos, Fairness-Unterstützung</span></div></div>
-    <div class="sv"><div class="sv-n">03</div><h3><span class="lang-en">LBO &amp; Merger Models</span><span class="lang-de">LBO- &amp; Merger-Modelle</span></h3><p class="lang-en">Returns analysis, debt sizing, and accretion/dilution. Includes debt waterfalls, covenant testing, and multiple exit scenarios.</p><p class="lang-de">Renditeanalysen, Verschuldungskapazität und Accretion/Dilution. Inklusive Tilgungspläne, Covenant-Tests und verschiedener Exit-Szenarien.</p><div class="sv-for"><span class="lang-en">Best For: Sponsor Acquisitions, Co-Investments, Lender Processes</span><span class="lang-de">Ideal für: Sponsor-Akquisitionen, Co-Investments, Kreditgeberprozesse</span></div></div>
-    <div class="sv"><div class="sv-n">04</div><h3><span class="lang-en">Returns Waterfalls &amp; Cap Tables</span><span class="lang-de">Returns Waterfalls &amp; Cap Tables</span></h3><p class="lang-en">Equity waterfalls, promote structures, and cap table modelling for sponsors and co-investors. Distribution logic, catch-up mechanics, and carried interest schedules.</p><p class="lang-de">Equity-Wasserfälle, Promote-Strukturen und Cap-Table-Modellierung für Sponsoren und Co-Investoren. Ausschüttungslogik, Catch-up-Mechanismen und Carried-Interest-Pläne.</p><div class="sv-for"><span class="lang-en">Best For: Fund Structures, Co-Investment Terms, LP Reporting</span><span class="lang-de">Ideal für: Fondsstrukturen, Co-Investment-Konditionen, LP-Reporting</span></div></div>
-    <div class="sv"><div class="sv-n">05</div><h3><span class="lang-en">Scenario &amp; Sensitivity</span><span class="lang-de">Szenario &amp; Sensitivität</span></h3><p class="lang-en">Management, base, and downside cases with toggle-driven assumptions. Sensitivity matrices mapping key value drivers to output KPIs.</p><p class="lang-de">Management-, Base- und Negativszenarien mit umschaltbaren Annahmen. Sensitivitätsmatrizen, die zentrale Werttreiber auf Ziel-KPIs abbilden.</p><div class="sv-for"><span class="lang-en">Best For: Board Presentations, Risk Assessment, Lender Comfort</span><span class="lang-de">Ideal für: Vorstandspräsentationen, Risikoeinschätzung, Kreditgeberabsicherung</span></div></div>
-    <div class="sv"><div class="sv-n">06</div><h3><span class="lang-en">Project Cost Analysis</span><span class="lang-de">Projektkostenanalyse</span></h3><p class="lang-en">Cost build-ups, CapEx schedules, and project-level returns for infrastructure and real assets. Includes drawdown timelines and funding-source waterfalls.</p><p class="lang-de">Kostenaufstellungen, CapEx-Pläne und projektbezogene Renditen für Infrastruktur und Real Assets. Inklusive Abrufzeitpläne und Finanzierungsquellen-Wasserfälle.</p><div class="sv-for"><span class="lang-en">Best For: Infrastructure, Real Assets, Development Projects</span><span class="lang-de">Ideal für: Infrastruktur, Real Assets, Entwicklungsprojekte</span></div></div>
-    <div class="sv"><div class="sv-n">07</div><h3><span class="lang-en">Model Audits</span><span class="lang-de">Model-Audits</span></h3><p class="lang-en">Independent structural review covering formula integrity, circular-reference checks, error flagging, and written improvement recommendations.</p><p class="lang-de">Unabhängige Strukturprüfung: Formelintegrität, Prüfung auf Zirkelverweise, Fehleridentifikation und schriftliche Verbesserungsempfehlungen.</p><div class="sv-for"><span class="lang-en">Best For: Pre-Transaction Quality Assurance, Inherited Models</span><span class="lang-de">Ideal für: Qualitätssicherung vor Transaktionen, übernommene Modelle</span></div></div>
-    <div class="sv"><div class="sv-n">08</div><h3><span class="lang-en">Bespoke Analysis</span><span class="lang-de">Individuelle Analysen</span></h3><p class="lang-en">Market sizing, unit economics, capital allocation frameworks, and board-level financial presentations tailored to your specific question.</p><p class="lang-de">Marktgrößenanalysen, Stückkostenrechnung, Kapitalallokationsrahmen und Finanzpräsentationen auf Vorstandsebene — zugeschnitten auf Ihre Fragestellung.</p><div class="sv-for"><span class="lang-en">Best For: Strategic Decisions, Investor Updates, Ad-Hoc Requests</span><span class="lang-de">Ideal für: strategische Entscheidungen, Investoren-Updates, Ad-hoc-Anfragen</span></div></div>
+    <div class="sv"><div class="sv-n">01</div><h3><span class="lang-en">Operating Models</span><span class="lang-de">Operating Models</span></h3><p class="lang-en">Integrated three-statement models: revenue build-ups, cost structures, working capital, and capex schedules. Fully linked with a clear audit trail.</p><p class="lang-de">Integrierte Drei-Statement-Modelle: Umsatzherleitung, Kostenstrukturen, Working Capital und Investitionspläne. Vollständig verknüpft mit nachvollziehbarer Prüfspur.</p><div class="sv-for lang-en">Best for: fundraises, board planning, sponsor due diligence</div><div class="sv-for lang-de">Ideal für: Kapitalaufnahmen, Vorstandsplanung, Sponsor-Due-Diligence</div></div>
+    <div class="sv"><div class="sv-n">02</div><h3><span class="lang-en">Valuation Analysis</span><span class="lang-de">Bewertungsanalysen</span></h3><p class="lang-en">DCF, comparable companies, precedent transactions, sum-of-the-parts. Output includes sensitivity tables and presentation-ready schedules.</p><p class="lang-de">DCF, Vergleichsunternehmen, Vergleichstransaktionen, Sum-of-the-Parts. Inklusive Sensitivitätstabellen und präsentationsfertiger Nebenrechnungen.</p><div class="sv-for lang-en">Best for: M&amp;A pricing, investment memos, fairness support</div><div class="sv-for lang-de">Ideal für: M&amp;A-Preisfindung, Investment-Memos, Fairness-Unterstützung</div></div>
+    <div class="sv"><div class="sv-n">03</div><h3><span class="lang-en">LBO &amp; Merger Models</span><span class="lang-de">LBO- &amp; Merger-Modelle</span></h3><p class="lang-en">Returns analysis, debt sizing, accretion/dilution. Includes debt waterfalls, covenant testing, and multiple exit scenarios.</p><p class="lang-de">Renditeanalysen, Verschuldungskapazität, Accretion/Dilution. Inkl. Tilgungspläne, Covenant-Tests und verschiedene Exit-Szenarien.</p><div class="sv-for lang-en">Best for: sponsor acquisitions, co-investments, lender processes</div><div class="sv-for lang-de">Ideal für: Sponsor-Akquisitionen, Co-Investments, Kreditgeberprozesse</div></div>
+    <div class="sv"><div class="sv-n">04</div><h3><span class="lang-en">Scenario &amp; Sensitivity</span><span class="lang-de">Szenario &amp; Sensitivität</span></h3><p class="lang-en">Management, base, and downside cases with toggle-driven assumptions. Sensitivity matrices mapping key value drivers to output KPIs.</p><p class="lang-de">Management-, Base- und Negativszenarien mit umschaltbaren Annahmen. Sensitivitätsmatrizen, die zentrale Werttreiber auf Ziel-KPIs abbilden.</p><div class="sv-for lang-en">Best for: board presentations, risk assessment, lender comfort</div><div class="sv-for lang-de">Ideal für: Vorstandspräsentationen, Risikoeinschätzung, Kreditgeberabsicherung</div></div>
+    <div class="sv"><div class="sv-n">05</div><h3><span class="lang-en">Model Audits</span><span class="lang-de">Model-Audits</span></h3><p class="lang-en">Independent structural review: formula integrity, circular-reference checks, error flagging, and written improvement recommendations.</p><p class="lang-de">Unabhängige Strukturprüfung: Formelintegrität, Zirkelverweiskontrolle, Fehleridentifikation und schriftliche Verbesserungsempfehlungen.</p><div class="sv-for lang-en">Best for: pre-transaction quality assurance, inherited models</div><div class="sv-for lang-de">Ideal für: Qualitätssicherung vor Transaktionen, übernommene Modelle</div></div>
+    <div class="sv"><div class="sv-n">06</div><h3><span class="lang-en">Bespoke Analysis</span><span class="lang-de">Individuelle Analysen</span></h3><p class="lang-en">Market sizing, unit economics, capital allocation frameworks, and board-level financial presentations tailored to your specific question.</p><p class="lang-de">Marktgrößenanalysen, Stückkostenrechnung, Kapitalallokationsrahmen und Finanzpräsentationen auf Vorstandsebene — zugeschnitten auf Ihre Fragestellung.</p><div class="sv-for lang-en">Best for: strategic decisions, investor updates, ad-hoc requests</div><div class="sv-for lang-de">Ideal für: strategische Entscheidungen, Investoren-Updates, Ad-hoc-Anfragen</div></div>
   </div>
-
-  <!-- Ongoing AI engagement -->
   <div class="llm rv">
     <div class="llm-l">
       <div class="llm-badge"><span class="dot"></span> <span class="lang-en">Ongoing Engagement</span><span class="lang-de">Laufendes Mandat</span></div>
-      <h3><span class="lang-en">Best-in-Class Reference Models<br>for a US-Based AI Platform</span><span class="lang-de">Best-in-Class-Referenzmodelle<br>für eine US-basierte KI-Plattform</span></h3>
-      <p class="lang-en">Ongoing confidential engagement with a US-based AI platform. We build gold-standard reference financial models used to train and benchmark best-practice modelling output — covering three-statement builds, DCF, LBO, and integrity checks.</p>
-      <p class="lang-de">Laufendes vertrauliches Mandat mit einer US-basierten KI-Plattform. Wir erstellen Gold-Standard-Referenzmodelle, die zum Training und Benchmarking von Best-Practice-Modelling-Output eingesetzt werden — über Drei-Statement-Modelle, DCF, LBO und Integritätsprüfungen hinweg.</p>
+      <h3><span class="lang-en">Financial Modelling for<br>a US-Based AI Platform</span><span class="lang-de">Financial Modelling für<br>eine US-basierte KI-Plattform</span></h3>
+      <p class="lang-en">Retained modelling support for a US-based AI platform (confidential). Scope covers revenue architecture, compute-cost scaling, and multi-product scenario matrices.</p>
+      <p class="lang-de">Laufende Modelling-Unterstützung für eine US-basierte KI-Plattform (vertraulich). Umfang: Umsatzarchitektur, Compute-Cost-Skalierung und Multi-Produkt-Szenariomatrizen.</p>
     </div>
     <div class="llm-r">
-      <div class="llm-s"><div class="llm-sl"><span class="lang-en">Client</span><span class="lang-de">Mandant</span></div><div class="llm-sv"><span class="lang-en">US-Based AI Platform (Confidential)</span><span class="lang-de">US-basierte KI-Plattform (vertraulich)</span></div></div>
-      <div class="llm-s"><div class="llm-sl"><span class="lang-en">Relationship</span><span class="lang-de">Beziehung</span></div><div class="llm-sv"><span class="lang-en">Gold-Standard Reference Models</span><span class="lang-de">Gold-Standard-Referenzmodelle</span></div><div class="llm-sn"><span class="lang-en">Best-practice model builds across core methodologies</span><span class="lang-de">Best-Practice-Modelle über alle Kernmethoden hinweg</span></div></div>
-      <div class="llm-s"><div class="llm-sl"><span class="lang-en">Scope</span><span class="lang-de">Umfang</span></div><div class="llm-sv"><span class="lang-en">Three-Statement · DCF · LBO · Integrity Checks</span><span class="lang-de">Drei-Statement · DCF · LBO · Integritätsprüfungen</span></div></div>
+      <div class="llm-s"><div class="llm-sl"><span class="lang-en">Client</span><span class="lang-de">Mandant</span></div><div class="llm-sv"><span class="lang-en">US-Based LLM Platform (Confidential)</span><span class="lang-de">US-basierte LLM-Plattform (vertraulich)</span></div></div>
+      <div class="llm-s"><div class="llm-sl"><span class="lang-en">Relationship</span><span class="lang-de">Beziehung</span></div><div class="llm-sv"><span class="lang-en">Retained Modelling Partner</span><span class="lang-de">Laufender Modelling-Partner</span></div><div class="llm-sn"><span class="lang-en">Continuous model builds, updates &amp; ad-hoc analysis</span><span class="lang-de">Fortlaufende Modellerstellung, Aktualisierungen &amp; Ad-hoc-Analysen</span></div></div>
+      <div class="llm-s"><div class="llm-sl"><span class="lang-en">Scope</span><span class="lang-de">Umfang</span></div><div class="llm-sv"><span class="lang-en">Revenue Architecture, Compute Costs, Scenario Matrices</span><span class="lang-de">Umsatzarchitektur, Compute-Kosten, Szenariomatrizen</span></div></div>
     </div>
   </div>
 </section>
@@ -648,7 +437,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     <div class="rv"><div class="sl" style="color:rgba(255,255,255,.18)"><span class="lang-en">How It Works</span><span class="lang-de">So funktioniert es</span></div><div class="st" style="color:#fff"><span class="lang-en">Three Steps to Your Model</span><span class="lang-de">In drei Schritten zu Ihrem Modell</span></div></div>
     <div class="hiw-grid rv">
       <div class="hiw-step"><div class="hiw-num">01</div><h3><span class="lang-en">Scope</span><span class="lang-de">Umfang definieren</span></h3><p class="lang-en">Book a 15-minute call. We discuss your requirements, timeline, and deliverables. You receive a fixed-fee proposal typically within 24 hours.</p><p class="lang-de">Buchen Sie ein 15-minütiges Gespräch. Wir besprechen Anforderungen, Zeitrahmen und Lieferumfang. In der Regel erhalten Sie innerhalb von 24 Stunden ein Festpreisangebot.</p></div>
-      <div class="hiw-step"><div class="hiw-num">02</div><h3><span class="lang-en">Build</span><span class="lang-de">Modell erstellen</span></h3><p class="lang-en">We build your model with regular check-ins and milestone updates. Direct access during working hours, with fast async updates outside of them.</p><p class="lang-de">Wir erstellen Ihr Modell mit regelmäßigen Abstimmungen und Fortschritts-Updates. Direkter Zugang während der Arbeitszeiten, schnelle asynchrone Rückmeldungen außerhalb dieser Zeiten.</p></div>
+      <div class="hiw-step"><div class="hiw-num">02</div><h3><span class="lang-en">Build</span><span class="lang-de">Modell erstellen</span></h3><p class="lang-en">We build your model with regular check-ins and milestone updates. Direct access during working hours; fast async updates outside of them.</p><p class="lang-de">Wir erstellen Ihr Modell mit regelmäßigen Abstimmungen und Fortschritts-Updates. Direkter Zugang während der Arbeitszeiten; schnelle asynchrone Rückmeldungen darüber hinaus.</p></div>
       <div class="hiw-step"><div class="hiw-num">03</div><h3><span class="lang-en">Deliver</span><span class="lang-de">Lieferung</span></h3><p class="lang-en">You receive a fully audited, presentation-ready model with documentation. Includes a walkthrough session and 14 days of post-delivery support.</p><p class="lang-de">Sie erhalten ein vollständig geprüftes, präsentationsfertiges Modell mit Dokumentation. Inklusive Walkthrough und 14 Tage Support nach Lieferung.</p></div>
     </div>
     <div class="hiw-cta rv"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bw"><span class="lang-en">Start With a Scoping Call</span><span class="lang-de">Mit einem Scoping-Call starten</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
@@ -657,161 +446,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <section class="sw tx-bg" id="transactions">
   <div style="max-width:1100px;margin:0 auto;">
-    <div class="rv"><div class="sl"><span class="lang-en">Select Transactions</span><span class="lang-de">Ausgewählte Transaktionen</span></div><div class="st"><span class="lang-en">Models Delivered on Live Deals</span><span class="lang-de">Modelle für reale Transaktionen</span></div><div class="ss"><span class="lang-en">Financial models built as part of $3bn+ of completed transactions across multiple sectors.</span><span class="lang-de">Finanzmodelle, erstellt im Rahmen abgeschlossener Transaktionen mit einem Gesamtvolumen von über $3 Mrd.</span></div></div>
+    <div class="rv"><div class="sl"><span class="lang-en">Select Transactions</span><span class="lang-de">Ausgewählte Transaktionen</span></div><div class="st"><span class="lang-en">Models Delivered on Live Deals</span><span class="lang-de">Modelle für reale Transaktionen</span></div><div class="ss"><span class="lang-en">Financial models built as part of $3bn+ of completed transactions across multiple sectors.</span><span class="lang-de">Finanzmodelle erstellt im Rahmen abgeschlossener Transaktionen mit einem Gesamtvolumen von über $3 Mrd.</span></div><div class="disclaimer"><span class="lang-en">Roles reflect modelling scope; not a claim of advisory role on the transaction.</span><span class="lang-de">Angaben beziehen sich auf den Modelling-Umfang; kein Anspruch auf eine beratende Rolle in der Transaktion.</span></div></div>
     <div class="tx-grid rv">
-
-      <div class="tx">
-        <div class="tx-logo-area">
-          <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" style="height:24px"><text x="0" y="20" font-family="Georgia,serif" font-size="20" font-weight="700" fill="#0B1829" letter-spacing="1">ASYAD</text></svg>
-        </div>
-        <div class="tx-sec">Maritime</div>
-        <div class="tx-nm">Asyad Shipping Company</div>
-        <div class="tx-d"><span class="lang-en">IPO modelling and scenario analysis for Oman Investment Authority IPO ($333m proceeds).</span><span class="lang-de">IPO-Modellierung und Szenarioanalyse für den Börsengang der Oman Investment Authority ($333 Mio. Erlös).</span></div>
-        <div class="tx-tags"><span class="tx-t">IPO</span><span class="tx-t">2025</span></div>
-      </div>
-
-      <div class="tx">
-        <div class="tx-logo-area">
-          <svg viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="16" font-weight="700" fill="#0B1829" letter-spacing=".5">Sunrise Medical</text></svg>
-        </div>
-        <div class="tx-sec">MedTech</div>
-        <div class="tx-nm">Sunrise Medical Group</div>
-        <div class="tx-d"><span class="lang-en">Sell-side operating model and returns sensitivities for sponsor exit process.</span><span class="lang-de">Sell-Side Operating Model und Rendite-Sensitivitäten für den Sponsor-Exit-Prozess.</span></div>
-        <div class="tx-tags"><span class="tx-t">Sell-Side</span><span class="tx-t">2024</span></div>
-      </div>
-
-      <div class="tx">
-        <div class="tx-logo-area">
-          <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="17" font-weight="700" fill="#0B1829" letter-spacing=".5">A2Mac1</text></svg>
-        </div>
-        <div class="tx-sec">Technology</div>
-        <div class="tx-nm">A2Mac1</div>
-        <div class="tx-d"><span class="lang-en">Model build and lender-case schedules supporting co-investment process.</span><span class="lang-de">Modellerstellung und Kreditgeber-Szenarien zur Unterstützung des Co-Investment-Prozesses.</span></div>
-        <div class="tx-tags"><span class="tx-t">Co-Investment</span><span class="tx-t">2022</span></div>
-      </div>
-
-      <div class="tx">
-        <div class="tx-logo-area">
-          <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#0B1829" letter-spacing=".3">Affidea</text></svg>
-        </div>
-        <div class="tx-sec">Healthcare Services</div>
-        <div class="tx-nm">Affidea Group</div>
-        <div class="tx-d"><span class="lang-en">Sell-side model build with Group CFO, including KPI bridge and sensitivities.</span><span class="lang-de">Sell-Side-Modellerstellung mit Group CFO, inklusive KPI-Brücke und Sensitivitäten.</span></div>
-        <div class="tx-tags"><span class="tx-t">Sell-Side</span><span class="tx-t">2022</span></div>
-      </div>
-
-      <div class="tx">
-        <div class="tx-logo-area">
-          <svg viewBox="0 0 140 28" xmlns="http://www.w3.org/2000/svg" style="height:22px"><text x="0" y="19" font-family="'DM Sans',sans-serif" font-size="17" font-weight="700" fill="#0B1829" letter-spacing=".3">OptiGroup</text></svg>
-        </div>
-        <div class="tx-sec">Business Services</div>
-        <div class="tx-nm">OptiGroup AB</div>
-        <div class="tx-d"><span class="lang-en">Five-year plan build and downside stress testing for sell-side process.</span><span class="lang-de">5-Jahres-Plan-Erstellung und Stresstest-Szenarien für den Sell-Side-Prozess.</span></div>
-        <div class="tx-tags"><span class="tx-t">Sell-Side</span><span class="tx-t">2021</span></div>
-      </div>
-
+      <div class="tx"><div class="tx-sec">Maritime</div><div class="tx-nm">Asyad Shipping Company</div><div class="tx-d"><span class="lang-en">Oman Investment Authority IPO. $333m proceeds.</span><span class="lang-de">Oman Investment Authority IPO. $333 Mio. Erlös.</span></div><div class="tx-scope"><span class="lang-en">Model scope: IPO model + sensitivities</span><span class="lang-de">Modellumfang: IPO-Modell + Sensitivitäten</span></div><div class="tx-tags"><span class="tx-t">IPO</span><span class="tx-t">2025</span></div><div class="tx-logos-row"><span class="tx-chip">J.P. Morgan</span></div></div>
+      <div class="tx"><div class="tx-sec">MedTech</div><div class="tx-nm">Sunrise Medical Group</div><div class="tx-d"><span class="lang-en">Nordic Capital sale to Platinum Equity.</span><span class="lang-de">Verkauf von Nordic Capital an Platinum Equity.</span></div><div class="tx-scope"><span class="lang-en">Model scope: Sell-side operating model</span><span class="lang-de">Modellumfang: Sell-Side Operating Model</span></div><div class="tx-tags"><span class="tx-t">Sell-Side</span><span class="tx-t">2024</span></div><div class="tx-logos-row"><span class="tx-chip">Nordic Capital</span><span class="tx-chip">Platinum Equity</span></div></div>
+      <div class="tx"><div class="tx-sec">Technology</div><div class="tx-nm">A2Mac1</div><div class="tx-d"><span class="lang-en">FAPI &amp; Providence Equity co-investment.</span><span class="lang-de">FAPI &amp; Providence Equity Co-Investment.</span></div><div class="tx-scope"><span class="lang-en">Model scope: Lender case model + data books</span><span class="lang-de">Modellumfang: Kreditgebermodell + Data Books</span></div><div class="tx-tags"><span class="tx-t">Co-Investment</span><span class="tx-t">2022</span></div><div class="tx-logos-row"><span class="tx-chip">FAPI</span><span class="tx-chip">Providence</span></div></div>
+      <div class="tx"><div class="tx-sec">Healthcare Services</div><div class="tx-nm">Affidea Group</div><div class="tx-d"><span class="lang-en">B-Flexion sale to GBL.</span><span class="lang-de">Verkauf von B-Flexion an GBL.</span></div><div class="tx-scope"><span class="lang-en">Model scope: Sell-side operating model (with Group CFO)</span><span class="lang-de">Modellumfang: Sell-Side Operating Model (mit Group CFO)</span></div><div class="tx-tags"><span class="tx-t">Sell-Side</span><span class="tx-t">2022</span></div><div class="tx-logos-row"><span class="tx-chip">Goldman Sachs</span><span class="tx-chip">GBL</span></div></div>
+      <div class="tx"><div class="tx-sec">Business Services</div><div class="tx-nm">OptiGroup AB</div><div class="tx-d"><span class="lang-en">Altor &amp; Triton sale to FSN Capital.</span><span class="lang-de">Verkauf von Altor &amp; Triton an FSN Capital.</span></div><div class="tx-scope"><span class="lang-en">Model scope: 5-year plan + robust scenario testing</span><span class="lang-de">Modellumfang: 5-Jahres-Plan + robuste Szenarioprüfung</span></div><div class="tx-tags"><span class="tx-t">Sell-Side</span><span class="tx-t">2021</span></div><div class="tx-logos-row"><span class="tx-chip">Altor</span><span class="tx-chip">Triton</span><span class="tx-chip">FSN Capital</span></div></div>
     </div>
     <div class="sec-cta rv"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bn"><span class="lang-en">Discuss Your Project</span><span class="lang-de">Ihr Projekt besprechen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
-<section class="sw ms-bg" id="showcase">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="rv"><div class="sl"><span class="lang-en">Model Showcase</span><span class="lang-de">Modell-Galerie</span></div><div class="st"><span class="lang-en">Beyond Transactions</span><span class="lang-de">Über Transaktionen hinaus</span></div><div class="ss"><span class="lang-en">Anonymised models built for sponsors, corporates, and platforms across sectors and methodologies.</span><span class="lang-de">Anonymisierte Modelle, erstellt für Sponsoren, Unternehmen und Plattformen über verschiedene Sektoren und Methoden hinweg.</span></div></div>
-    <div class="ms-grid rv">
-
-      <div class="ms">
-        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-9"/></svg></div>
-        <div class="ms-type">B2B SaaS</div>
-        <div class="ms-nm"><span class="lang-en">Three-Statement Model</span><span class="lang-de">Drei-Statement-Modell</span></div>
-        <div class="ms-d"><span class="lang-en">Revenue-driver build with cohort-based retention, ARR waterfall, and expansion logic feeding a fully integrated P&amp;L, balance sheet, and cash flow.</span><span class="lang-de">Umsatztreibermodell mit kohortenbasierter Retention, ARR-Wasserfall und Expansionslogik in einer integrierten GuV, Bilanz und Cashflow-Rechnung.</span></div>
-        <div class="ms-tags"><span class="ms-t">Revenue Drivers</span><span class="ms-t">ARR Waterfall</span><span class="ms-t">Three-Statement</span></div>
-      </div>
-
-      <div class="ms">
-        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <div class="ms-type">Consumer Healthcare</div>
-        <div class="ms-nm"><span class="lang-en">DCF Valuation</span><span class="lang-de">DCF-Bewertung</span></div>
-        <div class="ms-d"><span class="lang-en">Multi-segment DCF with country-level revenue build, WACC-by-division, and football-field output bridging to prior transaction benchmarks.</span><span class="lang-de">Multi-Segment-DCF mit l&auml;nderspezifischer Umsatzherleitung, WACC nach Division und Football-Field-Output mit Benchmarking gegenüber Vergleichstransaktionen.</span></div>
-        <div class="ms-tags"><span class="ms-t">DCF</span><span class="ms-t">Sensitivity</span><span class="ms-t">Sum-of-Parts</span></div>
-      </div>
-
-      <div class="ms">
-        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div class="ms-type">PE Fund</div>
-        <div class="ms-nm"><span class="lang-en">Returns &amp; Waterfall Analysis</span><span class="lang-de">Rendite- &amp; Wasserfall-Analyse</span></div>
-        <div class="ms-d"><span class="lang-en">Fund-level returns model with deal-by-deal attribution, GP/LP waterfall, promote hurdles, and carried interest mechanics.</span><span class="lang-de">Fondsrenditemodell mit Deal-by-Deal-Attribution, GP/LP-Wasserfall, Promote-H&uuml;rden und Carried-Interest-Mechanik.</span></div>
-        <div class="ms-tags"><span class="ms-t">Fund Returns</span><span class="ms-t">GP/LP Waterfall</span><span class="ms-t">Carry</span></div>
-      </div>
-
-      <div class="ms">
-        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div>
-        <div class="ms-type">Infrastructure</div>
-        <div class="ms-nm"><span class="lang-en">Project Cost Model</span><span class="lang-de">Projektkostenmodell</span></div>
-        <div class="ms-d"><span class="lang-en">Multi-phase development cost build with drawdown schedules, contingency layers, and funding-source waterfall feeding project IRR.</span><span class="lang-de">Mehrstufige Projektkostenaufstellung mit Abrufpl&auml;nen, Kontingenzstufen und Finanzierungsquellen-Wasserfall als Input f&uuml;r Projekt-IRR.</span></div>
-        <div class="ms-tags"><span class="ms-t">CapEx Build</span><span class="ms-t">Drawdown</span><span class="ms-t">Project IRR</span></div>
-      </div>
-
-      <div class="ms">
-        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="ms-type">Leisure &amp; Hospitality</div>
-        <div class="ms-nm"><span class="lang-en">Operating Model</span><span class="lang-de">Operating Model</span></div>
-        <div class="ms-d"><span class="lang-en">Unit-economics-driven P&amp;L with membership tiers, utilisation curves, and scenario toggles for expansion planning across multiple locations.</span><span class="lang-de">St&uuml;ckkostenbasierte GuV mit Mitgliedschaftsstufen, Auslastungskurven und Szenario-Toggles f&uuml;r Expansionsplanung &uuml;ber mehrere Standorte.</span></div>
-        <div class="ms-tags"><span class="ms-t">Unit Economics</span><span class="ms-t">Scenario</span><span class="ms-t">Expansion</span></div>
-      </div>
-
-      <div class="ms">
-        <div class="ms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
-        <div class="ms-type">Automotive OEM</div>
-        <div class="ms-nm"><span class="lang-en">Capital Structure</span><span class="lang-de">Kapitalstruktur</span></div>
-        <div class="ms-d"><span class="lang-en">Debt capacity analysis with covenant testing, refinancing schedules, and rating-agency metrics mapped against downside operating scenarios.</span><span class="lang-de">Verschuldungskapazit&auml;tsanalyse mit Covenant-Tests, Refinanzierungspl&auml;nen und Rating-Agentur-Metriken im Abgleich mit negativen Betriebsszenarien.</span></div>
-        <div class="ms-tags"><span class="ms-t">Debt Sizing</span><span class="ms-t">Covenants</span><span class="ms-t">Stress Test</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="about">
-  <div class="about-intro rv">
-    <div class="sl"><span class="lang-en">About</span><span class="lang-de">Über uns</span></div>
-    <div class="st"><span class="lang-en">Built on Execution</span><span class="lang-de">Aufgebaut auf Exzellenz</span></div>
-    <p class="lang-en">Dogan Advisory is an independent financial modelling practice. Every model is built directly by the founder — a former Jefferies International practitioner who developed his craft on live transactions across M&amp;A, LBO, and capital markets mandates. No junior handoffs, no outsourcing. One practitioner, one standard.</p>
-    <p class="lang-de">Dogan Advisory ist eine unabhängige Financial-Modelling-Praxis. Jedes Modell wird direkt vom Gründer erstellt — einem ehemaligen Jefferies-International-Praktiker, der sein Handwerk an realen Transaktionen im Bereich M&amp;A, LBO und Kapitalmarkt geschärft hat. Keine Delegation an Junioren, kein Outsourcing. Ein Praktiker, ein Standard.</p>
+  <div class="about-grid">
+    <div class="rv"><div class="sl"><span class="lang-en">About</span><span class="lang-de">Über uns</span></div><div class="st"><span class="lang-en">Built on Execution</span><span class="lang-de">Aufgebaut auf Exzellenz</span></div>
+      <p class="lang-en">Dogan &amp; Co is an independent financial modelling firm.<br>Our founder's practice was built at Jefferies International,<br>executing live transactions. Practitioner-led, no handoffs.</p>
+      <p class="lang-de">Dogan &amp; Co ist eine unabhängige Financial-Modelling-Firma.<br>Die Praxis unseres Gründers wurde bei Jefferies International<br>an realen Transaktionen aufgebaut. Direkt vom Praktiker — ohne Weitergabe.</p>
+    </div>
+    <div class="rv"><div class="creds">
+      <div class="cr"><div class="cr-l"><span class="lang-en">Background</span><span class="lang-de">Hintergrund</span></div><div class="cr-v">Jefferies International<br><span>EMEA M&amp;A &amp; MENA Coverage</span></div></div>
+      <div class="cr"><div class="cr-l"><span class="lang-en">Education</span><span class="lang-de">Ausbildung</span></div><div class="cr-v">UCL — MSc (Distinction)<br>Wuppertal — BSc (Top 1%)</div></div>
+      <div class="cr"><div class="cr-l"><span class="lang-en">Languages</span><span class="lang-de">Sprachen</span></div><div class="cr-v"><span class="lang-en">English · German</span><span class="lang-de">Englisch · Deutsch</span></div></div>
+      <div class="cr"><div class="cr-l"><span class="lang-en">Based In</span><span class="lang-de">Standort</span></div><div class="cr-v">Dubai, U.A.E.</div></div>
+    </div></div>
   </div>
-
-  <div class="about-cards rv">
-    <div class="about-card">
-      <svg class="about-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-      <h4><span class="lang-en">Background</span><span class="lang-de">Hintergrund</span></h4>
-      <p>Jefferies International — EMEA M&amp;A &amp; MENA Coverage</p>
-    </div>
-    <div class="about-card">
-      <svg class="about-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
-      <h4><span class="lang-en">Education</span><span class="lang-de">Ausbildung</span></h4>
-      <p>UCL — MSc (Distinction) · Wuppertal — BSc (Top 1%)</p>
-    </div>
-    <div class="about-card">
-      <svg class="about-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-      <h4><span class="lang-en">Languages</span><span class="lang-de">Sprachen</span></h4>
-      <p><span class="lang-en">English · German</span><span class="lang-de">Englisch · Deutsch</span></p>
-    </div>
-    <div class="about-card">
-      <svg class="about-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <h4><span class="lang-en">Based In</span><span class="lang-de">Standort</span></h4>
-      <p>Dubai, U.A.E.</p>
-    </div>
-  </div>
-
-  <!-- Key stats tiles -->
-  <div class="about-stats rv">
-    <div class="about-stat"><div class="about-stat-val">$3bn<span style="font-size:16px;font-weight:400;opacity:.4">+</span></div><div class="about-stat-label"><span class="lang-en">Deal Value Modelled</span><span class="lang-de">Modelliertes Transaktionsvolumen</span></div></div>
-    <div class="about-stat"><div class="about-stat-val">21<span style="font-size:16px;font-weight:400;opacity:.4">+</span></div><div class="about-stat-label"><span class="lang-en">Models Delivered</span><span class="lang-de">Modelle geliefert</span></div></div>
-    <div class="about-stat"><div class="about-stat-val" style="font-size:16px;letter-spacing:0"><span class="lang-en">EMEA M&amp;A<br>&amp; MENA</span><span class="lang-de">EMEA M&amp;A<br>&amp; MENA</span></div><div class="about-stat-label"><span class="lang-en">Coverage Scope</span><span class="lang-de">Abdeckung</span></div></div>
-    <div class="about-stat"><div class="about-stat-val" style="font-size:16px;letter-spacing:0">UCL MSc<br><span style="font-size:12px;font-weight:400;color:var(--txt2)">(Distinction)</span></div><div class="about-stat-label"><span class="lang-en">Education</span><span class="lang-de">Ausbildung</span></div></div>
-  </div>
-
-  <div class="sec-cta rv"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bn"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch buchen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  <div class="sec-cta rv"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bn"><span class="lang-en">Book a Call</span><span class="lang-de">Gespräch Buchen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
 </section>
 
 <div class="dv"></div>
@@ -823,60 +483,34 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <div class="pc-from"><span class="lang-en">Engagements From</span><span class="lang-de">Mandate ab</span></div>
       <div class="pc-amt"><sup>$</sup>2,500</div>
       <div class="pc-range"><span class="lang-en">Typical projects: $2,500 – $15,000 depending on scope</span><span class="lang-de">Übliche Projekte: $2.500 – $15.000 je nach Umfang</span></div>
-      <div class="pc-note"><span class="lang-en">Project-Scoped · Fixed or Milestone-Based</span><span class="lang-de">Projektbezogen · Fest- oder Meilenstein-basiert</span></div>
+      <div class="pc-note"><span class="lang-en">Project-scoped · Fixed or milestone-based</span><span class="lang-de">Projektbezogen · Fest- oder Meilenstein-basiert</span></div>
       <ul class="pc-list">
-        <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="lang-en">Audit-Ready, Presentation-Grade Output</span><span class="lang-de">Prüfungsfähig und präsentationsfertig</span></li>
-        <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="lang-en">Direct Practitioner on Every Engagement</span><span class="lang-de">Direkter Praktiker bei jedem Mandat</span></li>
-        <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="lang-en">14 Days Post-Delivery Support Included</span><span class="lang-de">14 Tage Support nach Lieferung inklusive</span></li>
-        <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="lang-en">Bilingual Delivery (English &amp; German)</span><span class="lang-de">Zweisprachige Lieferung (Englisch &amp; Deutsch)</span></li>
+        <li class="lang-en"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Audit-Ready, Presentation-Grade Output</li>
+        <li class="lang-en"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Direct Practitioner on Every Engagement</li>
+        <li class="lang-en"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>14 Days Post-Delivery Support Included</li>
+        <li class="lang-en"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Bilingual Delivery (English &amp; German)</li>
+        <li class="lang-de"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Prüfungsfähig und präsentationsfertig</li>
+        <li class="lang-de"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Direkter Praktiker bei jedem Mandat</li>
+        <li class="lang-de"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>14 Tage Support nach Lieferung inklusive</li>
+        <li class="lang-de"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Zweisprachige Lieferung (Englisch &amp; Deutsch)</li>
       </ul>
-      <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bn" style="width:100%;justify-content:center"><span class="lang-en">Get Started</span><span class="lang-de">Jetzt starten</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bn" style="width:100%;justify-content:center"><span class="lang-en">Get Started</span><span class="lang-de">Jetzt Starten</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <div class="pc-notfit">
         <strong><span class="lang-en">Scope &amp; Exclusions</span><span class="lang-de">Umfang &amp; Ausschlüsse</span></strong><br>
-        <span class="lang-en">Core focus: financial modelling deliverables (operating models, valuation, LBO, scenario tools). Also available on an hourly basis: fractional CFO-style support, investor materials, and ad-hoc analysis. Not provided: legal or tax advice, or acting as lead advisor on an end-to-end M&amp;A process.</span>
-        <span class="lang-de">Schwerpunkt: Financial-Modelling-Deliverables (Operating Models, Bewertungen, LBO, Szenario-Tools). Ebenfalls verfügbar (auf Stundenbasis): punktuelle CFO-Unterstützung, Investorenmaterialien und Ad-hoc-Analysen. Nicht angeboten: Rechts- oder Steuerberatung sowie die Rolle als federführender Berater in einem vollständigen M&amp;A-Prozess.</span>
+        <span class="lang-en">Core focus: financial modelling deliverables (operating models, valuation, LBO, scenario tools). Also available (hourly): fractional CFO-style support, investor materials, and ad-hoc analysis, depending on scope. Not provided: legal or tax advice, or acting as lead advisor running an end-to-end M&amp;A process.</span>
+        <span class="lang-de">Schwerpunkt: Financial-Modelling-Deliverables (Operating Models, Bewertungen, LBO, Szenario-Tools). Ebenfalls verfügbar (auf Stundenbasis): punktuelle CFO-Unterstützung, Investorenmaterialien und Ad-hoc-Analysen, je nach Umfang. Nicht angeboten: Rechts- oder Steuerberatung sowie die Rolle als federführender Berater in einem vollständigen M&amp;A-Prozess.</span>
       </div>
     </div>
   </div>
-
   <div class="rv" style="margin-top:72px"><div class="sl"><span class="lang-en">Frequently Asked Questions</span><span class="lang-de">Häufig gestellte Fragen</span></div></div>
   <div class="faq-list rv">
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">What Do You Need From Us to Start?</span><span class="lang-de">Was benötigen Sie von uns zum Start?</span></summary>
-      <div class="faq-ans"><span class="lang-en">Historical financials (2–3 years), a management case or business plan if available, and a brief on the intended use of the model. We can work with incomplete data and fill gaps during the build.</span><span class="lang-de">Historische Finanzdaten (2–3 Jahre), ein Management Case oder Geschäftsplan, falls vorhanden, sowie eine kurze Beschreibung des Verwendungszwecks. Wir können auch mit unvollständigen Daten arbeiten.</span></div>
-    </details></div>
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">How Fast Can You Deliver?</span><span class="lang-de">Wie schnell können Sie liefern?</span></summary>
-      <div class="faq-ans"><span class="lang-en">Standard operating models: 1–2 weeks. Valuation or LBO models: 3–5 business days. Model audits: 2–4 business days. Expedited delivery is available for live processes.</span><span class="lang-de">Standard-Operating-Models: 1–2 Wochen. Bewertungs- oder LBO-Modelle: 3–5 Werktage. Model-Audits: 2–4 Werktage. Beschleunigte Lieferung für laufende Prozesse möglich.</span></div>
-    </details></div>
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">Fixed Fee or Hourly?</span><span class="lang-de">Festpreis oder stundenbasiert?</span></summary>
-      <div class="faq-ans"><span class="lang-en">Most projects are fixed-fee with scope defined upfront. For ongoing or open-ended engagements (e.g. fractional CFO support), we offer hourly arrangements. You always know the cost before work begins.</span><span class="lang-de">Die meisten Projekte werden zum Festpreis mit vorab definiertem Umfang durchgeführt. Für laufende oder offene Mandate (z. B. punktuelle CFO-Unterstützung) bieten wir Stundenvereinbarungen an. Die Kosten stehen immer vor Beginn der Arbeit fest.</span></div>
-    </details></div>
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">How Many Revisions Are Included?</span><span class="lang-de">Wie viele Überarbeitungen sind enthalten?</span></summary>
-      <div class="faq-ans"><span class="lang-en">Every engagement includes one round of revisions within scope, plus 14 days of post-delivery support for minor adjustments and questions. Material scope changes are quoted separately.</span><span class="lang-de">Jedes Mandat umfasst eine Überarbeitungsrunde innerhalb des vereinbarten Umfangs sowie 14 Tage Support nach Lieferung für kleinere Anpassungen und Rückfragen. Wesentliche Umfangsänderungen werden separat angeboten.</span></div>
-    </details></div>
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">How Do You Handle Confidentiality?</span><span class="lang-de">Wie handhaben Sie Vertraulichkeit?</span></summary>
-      <div class="faq-ans"><span class="lang-en">We sign NDAs as standard practice before receiving any data. All work product is stored securely and deleted upon project completion unless otherwise agreed.</span><span class="lang-de">Wir unterzeichnen standardmäßig eine Geheimhaltungsvereinbarung vor Erhalt jeglicher Daten. Alle Arbeitsergebnisse werden sicher gespeichert und nach Projektabschluss gelöscht, sofern nicht anders vereinbart.</span></div>
-    </details></div>
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">What Does "Audit-Ready" Mean in Practice?</span><span class="lang-de">Was bedeutet „prüfungsfähig" in der Praxis?</span></summary>
-      <div class="faq-ans"><span class="lang-en">Clear structure, consistent formatting, no hardcoded inputs in formulas, labelled assumptions, and an integrity-check tab. The model can go to a third-party reviewer without rework.</span><span class="lang-de">Klare Struktur, einheitliche Formatierung, keine fest codierten Eingaben in Formeln, beschriftete Annahmen und ein Integritätsprüfungs-Tab. Das Modell kann ohne Nacharbeit an einen externen Prüfer übergeben werden.</span></div>
-    </details></div>
-
-    <div class="faq-item"><details>
-      <summary><span class="lang-en">Can You Help With Decks or Fractional CFO Work?</span><span class="lang-de">Können Sie auch bei Pitch Decks oder als Interims-CFO unterstützen?</span></summary>
-      <div class="faq-ans"><span class="lang-en">Yes, on an hourly basis depending on scope. Our core focus remains financial modelling, but we regularly support clients with investor materials and ad-hoc CFO-level analysis.</span><span class="lang-de">Ja, auf Stundenbasis und je nach Umfang. Unser Schwerpunkt bleibt Financial Modelling, aber wir unterstützen Mandanten regelmäßig mit Investorenmaterialien und Ad-hoc-Analysen auf CFO-Ebene.</span></div>
-    </details></div>
-
+    <div class="faq-item"><details class="lang-en"><summary>What Do You Need From Us to Start?</summary><div class="faq-ans">Historical financials (2–3 years), a management case or business plan if available, and a brief on the intended use of the model. We can work with incomplete data and fill gaps during the build.</div></details><details class="lang-de"><summary>Was benötigen Sie von uns zum Start?</summary><div class="faq-ans">Historische Finanzdaten (2–3 Jahre), ein Management Case oder Geschäftsplan falls vorhanden, sowie eine kurze Beschreibung des Verwendungszwecks. Wir können auch mit unvollständigen Daten arbeiten.</div></details></div>
+    <div class="faq-item"><details class="lang-en"><summary>How Fast Can You Deliver?</summary><div class="faq-ans">Standard operating models: 1–2 weeks. Valuation or LBO models: 3–5 business days. Model audits: 2–4 business days. Expedited delivery is available for live processes.</div></details><details class="lang-de"><summary>Wie schnell können Sie liefern?</summary><div class="faq-ans">Standard-Operating-Models: 1–2 Wochen. Bewertungs- oder LBO-Modelle: 3–5 Werktage. Model-Audits: 2–4 Werktage. Beschleunigte Lieferung für laufende Prozesse möglich.</div></details></div>
+    <div class="faq-item"><details class="lang-en"><summary>Fixed Fee or Hourly?</summary><div class="faq-ans">Most projects are fixed-fee with a scope defined upfront. For ongoing or open-ended engagements (e.g. fractional CFO support), we offer hourly arrangements. You always know the cost before work begins.</div></details><details class="lang-de"><summary>Festpreis oder stundenbasiert?</summary><div class="faq-ans">Die meisten Projekte werden zum Festpreis mit vorab definiertem Umfang durchgeführt. Für laufende oder offene Mandate (z. B. punktuelle CFO-Unterstützung) bieten wir Stundenvereinbarungen an. Die Kosten stehen immer vor Beginn der Arbeit fest.</div></details></div>
+    <div class="faq-item"><details class="lang-en"><summary>How Many Revisions Are Included?</summary><div class="faq-ans">Every engagement includes one round of revisions within scope plus 14 days of post-delivery support for minor adjustments and questions. Material scope changes are quoted separately.</div></details><details class="lang-de"><summary>Wie viele Überarbeitungen sind enthalten?</summary><div class="faq-ans">Jedes Mandat umfasst eine Überarbeitungsrunde innerhalb des vereinbarten Umfangs sowie 14 Tage Support nach Lieferung für kleinere Anpassungen und Rückfragen. Wesentliche Umfangsänderungen werden separat angeboten.</div></details></div>
+    <div class="faq-item"><details class="lang-en"><summary>How Do You Handle Confidentiality?</summary><div class="faq-ans">We sign NDAs as standard practice before receiving any data. All work product is stored securely and deleted upon project completion unless otherwise agreed.</div></details><details class="lang-de"><summary>Wie handhaben Sie Vertraulichkeit?</summary><div class="faq-ans">Wir unterzeichnen standardmäßig eine Geheimhaltungsvereinbarung vor Erhalt jeglicher Daten. Alle Arbeitsergebnisse werden sicher gespeichert und nach Projektabschluss gelöscht, sofern nicht anders vereinbart.</div></details></div>
+    <div class="faq-item"><details class="lang-en"><summary>What Does "Audit-Ready" Mean in Practice?</summary><div class="faq-ans">Clear structure, consistent formatting, no hardcoded inputs in formulas, labelled assumptions, and an integrity-check tab. The model can go to a third-party reviewer without rework.</div></details><details class="lang-de"><summary>Was bedeutet „prüfungsfähig" in der Praxis?</summary><div class="faq-ans">Klare Struktur, einheitliche Formatierung, keine fest codierten Eingaben in Formeln, beschriftete Annahmen und ein Integritätsprüfungs-Tab. Das Modell kann ohne Nacharbeit an einen externen Prüfer übergeben werden.</div></details></div>
+    <div class="faq-item"><details class="lang-en"><summary>Can You Help With Decks or Fractional CFO Work?</summary><div class="faq-ans">Yes, on an hourly basis depending on scope. Our core focus remains financial modelling, but we regularly support clients with investor materials and ad-hoc CFO-level analysis.</div></details><details class="lang-de"><summary>Können Sie auch bei Pitch Decks oder als Interims-CFO unterstützen?</summary><div class="faq-ans">Ja, auf Stundenbasis und je nach Umfang. Unser Schwerpunkt bleibt Financial Modelling, aber wir unterstützen Mandanten regelmäßig mit Investorenmaterialien und Ad-hoc-Analysen auf CFO-Ebene.</div></details></div>
   </div>
 </section>
 
@@ -885,8 +519,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <div class="legal-sec">
   <div class="legal-inner">
     <h4><span class="lang-en">Legal Notice</span><span class="lang-de">Rechtliche Hinweise</span></h4>
-    <p class="lang-en">Dogan Advisory provides financial modelling and related analytical support. Nothing on this website constitutes investment, legal, or tax advice. All liability terms are governed by the respective engagement letter. Roles referenced in the transactions section reflect modelling scope, not a claim of advisory role on the transaction. All logos and trademarks referenced on this site are the property of their respective owners and are shown for informational purposes only. Contact: selim.dogan@outlook.com.</p>
-    <p class="lang-de">Dogan Advisory erbringt Financial-Modelling- und damit verbundene Analyseleistungen. Nichts auf dieser Website stellt eine Anlage-, Rechts- oder Steuerberatung dar. Haftungsregelungen richten sich nach dem jeweiligen Mandatsvertrag. Die im Transaktionsbereich genannten Rollen beziehen sich auf den Modelling-Umfang und stellen keinen Anspruch auf eine beratende Rolle bei der Transaktion dar. Alle auf dieser Website genannten Logos und Marken sind Eigentum ihrer jeweiligen Inhaber und werden ausschließlich zu Informationszwecken dargestellt. Kontakt: selim.dogan@outlook.com.</p>
+    <p class="lang-en">Dogan &amp; Co Advisory provides financial modelling and related advisory support. Nothing on this website or in our deliverables constitutes investment advice, legal advice, or tax advice. All work product is intended for internal client use unless otherwise agreed in writing. Confidentiality and non-disclosure agreements are available and signed as standard practice. Liability terms are governed by the respective engagement letter. Trademarks referenced on this site belong to their respective owners. For questions, please contact selim.dogan@outlook.com.</p>
+    <p class="lang-de">Dogan &amp; Co Advisory erbringt Financial-Modelling- und damit verbundene Beratungsleistungen. Nichts auf dieser Website oder in unseren Arbeitsergebnissen stellt eine Anlageberatung, Rechtsberatung oder Steuerberatung dar. Alle Arbeitsergebnisse sind für den internen Gebrauch des Mandanten bestimmt, sofern nicht schriftlich anders vereinbart. Geheimhaltungsvereinbarungen werden standardmäßig angeboten und unterzeichnet. Haftungsregelungen richten sich nach dem jeweiligen Mandatsvertrag. Auf dieser Website referenzierte Marken gehören ihren jeweiligen Eigentümern. Bei Fragen wenden Sie sich bitte an selim.dogan@outlook.com.</p>
   </div>
 </div>
 
@@ -894,12 +528,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   <div class="rv">
     <div class="sl"><span class="lang-en">Contact</span><span class="lang-de">Kontakt</span></div>
     <div class="st"><span class="lang-en">Let's Scope Your Project</span><span class="lang-de">Lassen Sie uns Ihr Projekt besprechen</span></div>
-    <div class="ss" style="margin-left:auto;margin-right:auto"><span class="lang-en">Book a 15-minute introductory call. No commitment, no cost.</span><span class="lang-de">Buchen Sie ein 15-minütiges Erstgespräch. Unverbindlich und kostenlos.</span></div>
+    <div class="ss" style="margin-left:auto;margin-right:auto"><span class="lang-en">Book a 15-minute introductory call. No commitment, no cost.</span><span class="lang-de">Buchen Sie ein 15-minütiges Erstgespräch. Unverbindlich und kostenfrei.</span></div>
     <div class="ct-ctas">
-      <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bw"><span class="lang-en">Book via Calendly</span><span class="lang-de">Über Calendly buchen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+      <a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank" class="bw"><span class="lang-en">Book via Calendly</span><span class="lang-de">Über Calendly Buchen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
       <a href="mailto:selim.dogan@outlook.com?subject=Modelling%20Enquiry" class="bg"><span class="lang-en">Send Scope via Email</span><span class="lang-de">Umfang per E-Mail senden</span></a>
     </div>
-    <div class="ct-hint"><span class="lang-en">Prefer email? Send scope and timeline to receive a proposal.</span><span class="lang-de">E-Mail bevorzugt? Senden Sie uns Umfang und Zeitrahmen für ein Angebot.</span></div>
+    <div class="ct-hint"><span class="lang-en">Prefer email? Send scope + timeline to get a proposal.</span><span class="lang-de">E-Mail bevorzugt? Senden Sie Umfang und Zeitrahmen für ein Angebot.</span></div>
     <div class="ct-links">
       <a href="https://www.linkedin.com/in/selim-dogan" target="_blank" class="clink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>LinkedIn</a>
       <a href="tel:+971585397047" class="clink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+971 58 539 7047</a>
@@ -909,13 +543,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <footer>
   <div class="footer-brand">
-    <span class="footer-brand-name">Dogan Advisory</span>
-    <span><span class="lang-en">&copy; 2026 Dogan Advisory. All rights reserved.</span><span class="lang-de">&copy; 2026 Dogan Advisory. Alle Rechte vorbehalten.</span></span>
+    <svg class="brand-mark" viewBox="0 0 32 32"><rect class="mark-bg" x="1" y="1" width="30" height="30" rx="4"/><text class="mark-letter" x="50%" y="54%" text-anchor="middle" dominant-baseline="central">D</text></svg>
+    <span><span class="lang-en">&copy; 2025 Dogan &amp; Co Advisory. All rights reserved.</span><span class="lang-de">&copy; 2025 Dogan &amp; Co Advisory. Alle Rechte vorbehalten.</span></span>
   </div>
-  <div><span class="lang-en">Dubai, U.A.E.</span><span class="lang-de">Dubai, VAE</span></div>
+  <div><span class="lang-en">Dubai, U.A.E.</span><span class="lang-de">Dubai, V.A.E.</span></div>
 </footer>
 
-<div class="sticky-cta"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank"><span class="lang-en">Book a 15-Min Scoping Call</span><span class="lang-de">15-minütigen Scoping-Call buchen</span></a></div>
+<div class="sticky-cta"><a href="https://calendly.com/selim-dogan/financial-advisory-intro-call" target="_blank"><span class="lang-en">Book a 15-Min Scoping Call</span><span class="lang-de">15-Min-Scoping-Call Buchen</span></a></div>
 
 <script>
 function L(l){
@@ -929,7 +563,7 @@ function L(l){
 })();
 function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');document.getElementById('menuBtn').classList.toggle('open')}
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.getElementById('menuBtn').classList.remove('open')}
-var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px 200px 0px'});
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:0.08});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 window.addEventListener('scroll',function(){var s=window.scrollY>50;document.getElementById('nav').classList.toggle('s',s);document.getElementById('lt').classList.toggle('s',s)});
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});closeDrawer()})});
